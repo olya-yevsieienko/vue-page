@@ -1,6 +1,6 @@
 <template>
     <div>
-        <my-search />
+        <my-search class="search" />
         <sidebar-list :list="listOption" />
 
     </div>
@@ -22,4 +22,8 @@ export default {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.search {
+    margin-bottom: 30px;
+}
+</style>

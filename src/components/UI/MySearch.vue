@@ -36,7 +36,7 @@ export default {
 .search__img {
     position: absolute;
     top: 3px;
-    right: -27px;
+    right: -19px;
     display: flex;
     align-items: center;
     justify-content: center;

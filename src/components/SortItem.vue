@@ -24,7 +24,7 @@
 export default {
     props: {
         sortItem: {
-            type: Array,
+            type: Object,
             required: true
         }
     },

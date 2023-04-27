@@ -18,6 +18,7 @@ import PageLayout from '@/components/PageLayout.vue'
   --main-text: #3B434E;
   --secondary-text: #787D85;
   --search: #A4A4A4;
+  --border: #DFDFDF;
   --violet: #7653FC;
   --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
   --border-radius: 5px;
