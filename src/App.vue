@@ -12,6 +12,10 @@
 <script>
 import Layout from '@/components/Layout.vue';
 import '@/assets/styles/style.scss';
+
+export default {
+    components: {Layout}
+}
 </script>
 
 <style>

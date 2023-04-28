@@ -6,10 +6,4 @@
     font-size: 14px;
     color: $main-text;
     background: $page-bgr;
-
-    &__main {
-        display: grid;
-        grid-template-columns: 230px 1fr;
-        column-gap: 30px;
-    }
 }
