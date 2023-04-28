@@ -8,6 +8,7 @@
             >
     
             <div class="header__title">
+                <!-- Заголовок из роута -->
                 <h2 class="header__title-name">Курсы по Photoshop</h2>
                 <span class="header__course-count">10</span>
             </div>

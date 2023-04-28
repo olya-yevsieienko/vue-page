@@ -51,7 +51,6 @@ export default {
         return {
             isListOpen: false,
             isSublistOpen: false,
-            isSublinkActive: false,
             listLength: this.item.options.length,
         }
     },
@@ -61,15 +60,6 @@ export default {
         },
         handleOpenSublist(id) {
             this.isSublistOpen = !this.isSublistOpen;
-        },
-        handleToggleActive(id) {
-            if (this.activeSublink === id) {
-                this.isSublinkActive = false;
-                this.activeSublink = 0;
-            } else {
-                this.isSublinkActive = true;
-                this.activeSublink = id;
-            }
         },
     },
 }

@@ -5,6 +5,10 @@
         </nav>
         <main class="page__main">
             <sidebar/>
+
+            <section>
+                <profession />
+            </section>
         </main>
     </div>
 </template>
