@@ -9,7 +9,7 @@
     </div>
 </template>
 
-<script setup>
+<script>
 import Layout from '@/components/Layout.vue';
 import '@/assets/styles/style.scss';
 </script>
