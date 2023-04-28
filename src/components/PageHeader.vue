@@ -5,8 +5,8 @@
                 src="@/assets/image/logo.svg"
                 alt="OWLtop"
                 class="header__logo"
-            >
-    
+            />
+
             <div class="header__title">
                 <!-- Заголовок из роута -->
                 <h2 class="header__title-name">Курсы по Photoshop</h2>
@@ -24,9 +24,8 @@
 import Sorting from './Sorting.vue';
 
 export default {
-    components: {Sorting}
-    
-}
+    components: {Sorting},
+};
 </script>
 
 <style scoped>

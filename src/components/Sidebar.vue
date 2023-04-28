@@ -2,7 +2,6 @@
     <div>
         <my-search class="search" />
         <sidebar-list :list="listOption" />
-
     </div>
 </template>
 
@@ -12,14 +11,14 @@ import sidebarData from '../assets/helpers/sidebarData.json';
 
 export default {
     components: {
-        SidebarList
+        SidebarList,
     },
     data() {
         return {
-            listOption: sidebarData
-        }
-    }
-}
+            listOption: sidebarData,
+        };
+    },
+};
 </script>
 
 <style scoped>

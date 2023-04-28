@@ -1,4 +1,8 @@
 <template>
+    <!-- 
+        В vue 3 допускается нахождение более одного элемента внутри template без корневого, а
+        в nuxt или vue 2 - нет (держи в голове эту инфу, чтоб потом не было проблем)
+    -->
     <li class="item">
         <div
             class="item__info"
@@ -8,16 +12,17 @@
                 :src="'src/assets/image/' + item.src"
                 :alt="item.title"
                 class="item__img"
-            >
-            <span
-                class="item__name"
-            >
+            />
+            <span class="item__name">
                 {{ item.title }}
             </span>
         </div>
     </li>
 
-    <ul v-if="isListOpen && listLength" class="item__list">
+    <ul
+        v-if="isListOpen && listLength"
+        class="item__list"
+    >
         <li
             v-for="listItem in item.options"
             :key="listItem.id"
@@ -26,16 +31,16 @@
         >
             {{ listItem.name }}
 
-                <ul v-if="isSublistOpen">
-                    <li
-                        v-for="item in listItem.list"
-                        :key="item"
-                        class="item__sublist-item"
-                        @click.stop
-                    >
-                        {{ item }}
-                    </li>
-                </ul>
+            <ul v-if="isSublistOpen">
+                <li
+                    v-for="item in listItem.list"
+                    :key="item"
+                    class="item__sublist-item"
+                    @click.stop
+                >
+                    {{ item }}
+                </li>
+            </ul>
         </li>
     </ul>
 </template>
@@ -51,8 +56,12 @@ export default {
         return {
             isListOpen: false,
             isSublistOpen: false,
+            /**
+             * @todo
+             * Ты не меняешь длину массива, поэтому в data этого быть не должно
+             */
             listLength: this.item.options.length,
-        }
+        };
     },
     methods: {
         handleOpenList() {
@@ -62,7 +71,7 @@ export default {
             this.isSublistOpen = !this.isSublistOpen;
         },
     },
-}
+};
 </script>
 
 <style scoped>

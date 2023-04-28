@@ -4,19 +4,23 @@
             <page-header />
         </nav>
         <main class="page__main">
-            <sidebar/>
+            <sidebar />
 
             <section>
-                <profession />
+                <!-- <profession /> -->
             </section>
         </main>
     </div>
 </template>
 
 <script setup>
-import PageHeader from '@/components/PageHeader.vue'
+/**
+ * @todo
+ * Тут ты используешь алиасы путей, а в других компонентах нет.
+ * Всё должно быть в едином стиле
+ */
+import PageHeader from '@/components/PageHeader.vue';
 import Sidebar from '@/components/Sidebar.vue';
-
 </script>
 
 <style scoped>

@@ -1,18 +1,18 @@
 <template>
     <div class="search">
         <input
-          type="text"
-          class="search__input"
-          placeholder="Поиск..."
-        >
+            type="text"
+            class="search__input"
+            placeholder="Поиск..."
+        />
         <div class="search__img"></div>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'my-search'
-}
+    name: 'my-search',
+};
 </script>
 
 <style scoped>
