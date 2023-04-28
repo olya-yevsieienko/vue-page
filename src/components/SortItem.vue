@@ -20,8 +20,7 @@
         <div class="sort__img-wrap">
             <span
                 class="sort__img"
-                @click="handleChangeSortDirection"
-                @click.stop
+                @click.stop="handleChangeSortDirection"
                 :class="{
                     'sort__img--desc': sortDirection === 'desc',
                 }"
@@ -52,62 +51,15 @@ export default {
     },
     methods: {
         handleSelect() {
+            this.isActive = !this.isActive;
+
             if (this.isActive) {
-                this.isActive = false;
                 this.sortDirection = 'asc';
-            } else {
-                this.isActive = true;
             }
-
-            // this.isActive = !this.isActive;
-
-            // if (this.isActive) {
-            //     this.sortDirection = 'asc';
-            // }
         },
         handleChangeSortDirection() {
-            if (this.sortDirection === 'asc') {
-                this.sortDirection = 'desc';
-            } else {
-                this.sortDirection = 'asc';
-            }
-
-            // this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+            this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
         },
     },
 };
 </script>
-
-<style>
-.sort {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    cursor: pointer;
-}
-.sort--active {
-    font-weight: 700;
-    color: var(--violet);
-}
-.sort--active .sort__img-wrap {
-    visibility: visible;
-}
-.sort__img-wrap {
-    margin-right: 8px;
-    padding: 10px 0;
-    visibility: hidden;
-}
-.sort__img {
-    display: block;
-    width: 20px;
-    height: 14px;
-    background: url('../assets/image/sort.svg');
-    background-repeat: no-repeat;
-}
-.sort__img--desc {
-    transform: rotate(180deg);
-}
-.sort__name {
-    padding: 10px 0;
-}
-</style>

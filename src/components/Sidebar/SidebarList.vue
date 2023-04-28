@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <sidebar-list-item
+        <SidebarItem
             v-for="item in list"
             :key="item.id"
             :item="item"
@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import SidebarListItem from './SidebarListItem.vue';
+import SidebarItem from '@/components/Sidebar/SidebarItem.vue';
 
 export default {
-    components: {SidebarListItem},
+    components: {SidebarItem},
     props: {
         list: {
             type: Array,

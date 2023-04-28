@@ -22,19 +22,15 @@ export default {
              * В данном случае у тебя не происходит изменения значений, поэтому нужно перенести этот массив
              * в computed
              */
-            sortItems: [
-                {id: 1, title: 'По рейтингу'},
-                {id: 2, title: 'По цене'},
-            ],
         };
     },
+    computed: {
+        sortItems() {
+            return [
+                {id: 1, title: 'По рейтингу'},
+                {id: 2, title: 'По цене'},
+            ];
+        }
+    }
 };
 </script>
-
-<style>
-.sorting {
-    display: flex;
-    align-items: center;
-    gap: 35px;
-}
-</style>

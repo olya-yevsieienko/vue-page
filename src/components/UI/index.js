@@ -1,5 +1,5 @@
-import MySearch from '@/components/UI/MySearch.vue';
+import Search from '@/components/UI/Search.vue';
 
 export default [
-    MySearch
+    Search
 ]
