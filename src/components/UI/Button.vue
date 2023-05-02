@@ -43,13 +43,23 @@ export default {
     color: inherit;
     border: 1px solid $light-gray;
     border-radius: $border-radius;
-    background-color: white;
     cursor: pointer;
-    
+    transition: all .5s ease;
+
+    &:hover {
+        background-color: $course-count;
+    }
+
     &--violet {
         color: white;
         border: none;
         background-color: $violet;
+
+        transition: all .5s ease;
+
+        &:hover {
+            background-color: $violet-hover;
+        }
     }
 
     &__icon {

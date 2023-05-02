@@ -32,7 +32,7 @@
                         <span class='prof__price'>{{ profession.price }} ₽</span>
                         <span class='prof__discount'>{{ profession.discount }} ₽</span>
                     </div>
-                    <span>цена</span>
+                    <span class="prof__descrptn">цена</span>
                 </div>
 
                 <div class='prof__block--column'>
@@ -41,7 +41,7 @@
                             {{ profession.credit }} ₽/мес
                         </span>
                     </div>
-                    <span>кредит</span>
+                    <span class="prof__descrptn">кредит</span>
                 </div>
 
                 <div class='prof__block--column'>
@@ -57,7 +57,7 @@
                             class='prof__star prof__star--unselected'
                         />
                     </div>
-                    <span>{{ profession.reviews }} {{ reviewWord }}</span>
+                    <span class="prof__descrptn">{{ profession.reviews }} {{ reviewWord }}</span>
                 </div>
             </div>
         </div>
