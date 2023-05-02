@@ -12,10 +12,6 @@
         &--column {
             flex-direction: column;
         }
-
-        &--gap {
-            gap: 48px;
-        }
     }
 
     &__tag {
@@ -62,7 +58,32 @@
         }
     }
 
+    &__prices {
+        display: grid;
+        grid-template-columns: repeat(3, max-content);
+        column-gap: 40px;
+    }
+
+    &__price {
+        font-size: 20px;
+    }
+
+    &__descrptn {
+        font-size: 12px;
+    }
+
+    &__discount {
+        margin-left: 12px;
+        padding: 5px 8px;
+        font-size: 12px;
+        font-weight: bold;
+        color: $green;
+        background: $light-green;
+        border-radius: 20px;
+    }
+
     &__stars {
+        margin-bottom: 10px;
         display: flex;
         gap: 5px;
     }
@@ -127,16 +148,18 @@
         gap: 20px;
     }
 
-    &__benefits {
-        margin-left: 15px;
-        height: max-content;
-    }
-
-    &__benefits-line {
+    &__benefit {
+        padding-left: 15px;
         display: block;
-        width: 3px;
-        height: 100%;
-        background: $green;
-        border-radius: 2px;
+        height: max-content;
+        border-left: 2px solid $green;
+
+        &:first-child {
+            margin-bottom: 20px;
+        }
+
+        &--red {
+            border-left: 2px solid $red;
+        }
     }
 }
