@@ -25,6 +25,7 @@
         height: 14px;
         background: url('@/assets/image/sort.svg');
         background-repeat: no-repeat;
+        transition: all .5s ease;
 
         &--desc {
             transform: rotate(180deg);
