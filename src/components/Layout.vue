@@ -1,16 +1,19 @@
 <template>
     <div class="layout">
-        <Header />
-        <main class="layout__main">
-            <Sidebar />
-
-            <section>
-                <Profession :profession="profession" />
-                <Reviews />
-                <Vacancies :profession="profession" />
-                <Benefits :profession="profession"/>
-            </section>
-        </main>
+        <div class="layout__content">
+            <Header />
+            <main class="layout__main">
+                <Sidebar />
+    
+                <section>
+                    <Profession :profession="profession" />
+                    <Reviews />
+                    <Vacancies :profession="profession" />
+                    <Benefits :profession="profession"/>
+                </section>
+            </main>
+        </div>
+        <Footer />
     </div>
 </template>
 
@@ -26,7 +29,8 @@ import Profession from '@/components/Profession.vue';
 import profession from '@/assets/models/profession';
 import Reviews from '@/components/Reviews/Reviews.vue';
 import Vacancies from '@/components/Vacancies.vue';
-import Benefits from './Benefits.vue';
+import Benefits from '@/components/Benefits.vue';
+import Footer from '@/components/Footer.vue';
 
 export default {
     components: {
@@ -35,7 +39,8 @@ export default {
         Profession, 
         Reviews, 
         Vacancies, 
-        Benefits 
+        Benefits,
+        Footer
     },
     // change for data from the route
     computed: {
@@ -48,6 +53,10 @@ export default {
 
 <style lang="scss">
 .layout {
+    &__content {
+        padding: 32px 88px 0 22px;
+    }
+
     &__main {
         display: grid;
         grid-template-columns: 230px 1fr;

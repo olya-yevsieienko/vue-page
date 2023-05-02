@@ -10,16 +10,29 @@
                 :key="benefit.name"
                 class="benefits__list-item"
             >
-                <span class="benefits__check"></span>
-
                 <div class="">
+                    <div class="benefits__check"></div>
                     <strong>{{ benefit.name }}</strong>
-                    <p class="">
-                        {{ benefit.body }}
-                    </p>
                 </div>
+
+                <p class="benefits__body">
+                    {{ benefit.body }}
+                </p>
             </li>
         </ul>
+
+        <div class="benefits__text">
+            {{ profession.perspective }}
+        </div>
+
+        <h4 class="benefits__title">Получаемые навыки</h4>
+        <span
+            v-for="skill in profession.skills"
+            :key="skill.name"
+            class="benefits__skill"
+        >
+            {{ skill }}
+        </span>
     </div>
 </template>
 

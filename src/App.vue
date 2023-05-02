@@ -18,7 +18,7 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
 /**
     * @todo
     * Стили выносятся из компонентов в отдельные css файлы (для уменьшения простыни кода в файле)
@@ -26,4 +26,14 @@ export default {
     * которые нет смысла выносить (например: https://imgur.com/a/erjCvmt)
     * или стили ui компонентов, которые должны инкапсулировать в себе какие-то базовые стили
 */
+@import '@/assets/styles/utils/variables.scss';
+
+.app {
+    font-family: 'NanoSans', sans-serif;
+    font-size: 14px;
+    min-height: 100vh;
+    width: 100%;
+    color: $main-text;
+    background: $page-bgr;
+}
 </style>
