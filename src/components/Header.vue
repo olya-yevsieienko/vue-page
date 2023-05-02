@@ -1,11 +1,13 @@
 <template>
     <div class="header">
         <div class="header__block">
-            <img
-                src="@/assets/image/logo.svg"
-                alt="OWLtop"
-                class="header__logo"
-            />
+            <a href="/">
+                <img
+                    src="@/assets/image/logo.svg"
+                    alt="OWLtop"
+                    class="header__logo"
+                />
+            </a>
 
             <div class="header__title">
                 <!-- Заголовок из роута -->

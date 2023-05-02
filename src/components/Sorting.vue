@@ -1,6 +1,6 @@
 <template>
     <div class="sorting">
-        <sort-item
+        <SortItem
             v-for="item in sortItems"
             :key="item.id"
             :sortItem="item"

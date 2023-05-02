@@ -24,7 +24,7 @@
                 :class="{
                     'sort__img--desc': sortDirection === 'desc',
                 }"
-            ></span>
+            />
         </div>
         <span class="sort__name">{{ sortItem.title }}</span>
     </div>
