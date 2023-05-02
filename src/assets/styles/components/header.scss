@@ -1,0 +1,35 @@
+.header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 42px;
+
+    &__block {
+        display: flex;
+    }
+
+    &__logo {
+        margin-right: 94px;
+    }
+
+    &__title {
+        display: flex;
+        align-items: center;
+    }
+
+    &__title-name {
+        margin-right: 20px;
+        font-size: 26px;
+        font-weight: 600;
+    }
+
+    &__course-count {
+        display: block;
+        padding: 6px 10px;
+        font-weight: bold;
+        color: #fff;
+        background: $course-count;
+        border-radius: 20px;
+    }
+}

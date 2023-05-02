@@ -1,0 +1,37 @@
+.sort {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+
+    &--active {
+        font-weight: 700;
+        color: $violet;
+    }
+
+    &--active &__img-wrap {
+        visibility: visible;
+    }
+
+    &__img-wrap {
+        margin-right: 8px;
+        padding: 10px 0;
+        visibility: hidden;
+    }
+
+    &__img {
+        display: block;
+        width: 20px;
+        height: 14px;
+        background: url('@/assets/image/sort.svg');
+        background-repeat: no-repeat;
+
+        &--desc {
+            transform: rotate(180deg);
+        }
+    }
+
+    &__name {
+        padding: 10px 0;
+    }
+}

@@ -1,39 +1,32 @@
 <template>
-  <div class="app">
-    <page-layout />
-  </div>
+    <div class="app">
+        <!-- 
+            @todo
+            Если ты используешь самозакрывающиеся теги компонентов, то они должны быть
+            в таком стиле <PageLayout />, как в react.
+        -->
+        <Layout />
+    </div>
 </template>
 
-<script setup>
-import PageLayout from '@/components/PageLayout.vue'
+<script>
+import Layout from '@/components/Layout.vue';
+import '@/assets/styles/style.scss';
+
+export default {
+    name: 'App',
+    components: {
+        Layout,
+    },
+};
 </script>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-
-  --page-bgr: #F5F6F8;
-  --main-text: #3B434E;
-  --secondary-text: #787D85;
-  --search: #A4A4A4;
-  --border: #DFDFDF;
-  --violet: #7653FC;
-  --box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
-  --border-radius: 5px;
-}
-
-@font-face {
-  font-family: "NanoSans";
-  src: local("NanoSans"),
-   url('/src/assets/fonts/NotoSans.ttf') format("truetype");
-}
-
-.app {
-  font-family: 'NanoSans', sans-serif;
-  font-size: 14px;
-  color: var(--main-text);
-  background: var(--page-bgr);
-}
+/**
+    * @todo
+    * Стили выносятся из компонентов в отдельные css файлы (для уменьшения простыни кода в файле)
+    * исключение составляют совсем маленькие стилистические изменения компонентов,
+    * которые нет смысла выносить (например: https://imgur.com/a/erjCvmt)
+    * или стили ui компонентов, которые должны инкапсулировать в себе какие-то базовые стили
+*/
 </style>
