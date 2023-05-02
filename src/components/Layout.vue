@@ -6,6 +6,9 @@
 
             <section>
                 <Profession :profession="profession" />
+                <Reviews />
+                <Vacancies :profession="profession" />
+                <Benefits :profession="profession"/>
             </section>
         </main>
     </div>
@@ -21,9 +24,19 @@ import Header from '@/components/Header.vue';
 import Sidebar from '@/components/Sidebar/Sidebar.vue';
 import Profession from '@/components/Profession.vue';
 import profession from '@/assets/models/profession';
+import Reviews from '@/components/Reviews/Reviews.vue';
+import Vacancies from '@/components/Vacancies.vue';
+import Benefits from './Benefits.vue';
 
 export default {
-    components: { Header, Sidebar, Profession },
+    components: {
+        Header, 
+        Sidebar, 
+        Profession, 
+        Reviews, 
+        Vacancies, 
+        Benefits 
+    },
     // change for data from the route
     computed: {
         profession() {

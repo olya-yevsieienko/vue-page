@@ -6,6 +6,10 @@
         margin-bottom: 22px;
     }
 
+    &--active {
+        color: $violet;
+    }
+
     &__info {
         display: flex;
         align-items: center;

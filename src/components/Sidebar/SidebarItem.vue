@@ -3,10 +3,15 @@
         В vue 3 допускается нахождение более одного элемента внутри template без корневого, а
         в nuxt или vue 2 - нет (держи в голове эту инфу, чтоб потом не было проблем)
     -->
-    <li class="item">
+    <li
+        class="item"
+        :class="{
+            'item--active': isActiveLink
+        }"
+    >
         <div
             class="item__info"
-            @click="handleOpenList()"
+            @click="handleOpenList"
         >
             <img
                 :src="'src/assets/image/' + item.src"
@@ -56,6 +61,7 @@ export default {
         return {
             isListOpen: false,
             isSublistOpen: false,
+            isActiveLink: false, 
             /**
              * @todo
              * Ты не меняешь длину массива, поэтому в data этого быть не должно
@@ -65,6 +71,8 @@ export default {
     methods: {
         handleOpenList() {
             this.isListOpen = !this.isListOpen;
+            this.isActiveLink = !this.isActiveLink;
+            this.isSublistOpen = false;
         },
         handleOpenSublist(id) {
             this.isSublistOpen = !this.isSublistOpen;

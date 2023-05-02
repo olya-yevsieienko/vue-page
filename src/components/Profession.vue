@@ -44,21 +44,9 @@
                     <span class="prof__descrptn">кредит</span>
                 </div>
 
-                <div class='prof__block--column'>
-                    <div class='prof__stars'>
-                        <span
-                        v-for='n in profession.rating'
-                        :key='n'
-                        class='prof__star prof__star--selected'
-                        />
-                         <span
-                            v-for='n in countOfUnselectedStars'
-                            :key='n'
-                            class='prof__star prof__star--unselected'
-                        />
-                    </div>
+                <Rating :rating="profession.rating" :isActive="false">
                     <span class="prof__descrptn">{{ profession.reviews }} {{ reviewWord }}</span>
-                </div>
+                </Rating>
             </div>
         </div>
 
@@ -83,13 +71,13 @@
                 
                 <div class='prof__block--columns'>
                     <div 
-                        v-for='option in profession.benefits'
+                        v-for='option in profession.features'
                         :key='option.name'
                     >
                         <div
-                            class='prof__benefit'
+                            class='prof__features'
                             :class='{
-                                "prof__benefit--red": option.color === "red"
+                                "prof__features--red": option.color === "red"
                             }'
                         >
                             <strong class='prof__subtitle'>{{ option.name }}</strong>
@@ -113,10 +101,11 @@
 
 <script>
 import Button from '@/components/UI/Button.vue';
+import Rating from '@/components/UI/Rating.vue';
 import { getCorrectEndingForReviews } from '@/assets/helpers/getCorrectWordEnding.js';
 
 export default {
-  components: { Button },
+  components: { Button, Rating },
     props: {
         profession: {
             type: Object

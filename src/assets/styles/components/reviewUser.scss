@@ -1,0 +1,31 @@
+.review {
+    &__header {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__block {
+        display: flex;
+        align-items: center;
+    }
+
+    &__photo {
+        margin-right: 10px;
+    }
+
+    &__name {
+        margin-right: 10px;
+        font-weight: bold;
+    }
+
+    &__date {
+        margin-right: 20px;
+    }
+
+    &__body {
+        padding-bottom: 20px;
+        border-bottom: 1px solid $light-gray;
+    }
+}

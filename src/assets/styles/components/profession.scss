@@ -69,7 +69,8 @@
     }
 
     &__descrptn {
-        font-size: 12px;
+        margin-top: 8px;
+        display: block;
     }
 
     &__discount {
@@ -80,26 +81,6 @@
         color: $green;
         background: $light-green;
         border-radius: 20px;
-    }
-
-    &__stars {
-        margin-bottom: 10px;
-        display: flex;
-        gap: 5px;
-    }
-
-    &__star {
-        display: block;
-        width: 20px;
-        height: 20px;
-
-        &--selected {
-            background: url('@/assets/image/star-selected.svg');
-        }
-
-        &--unselected {
-            background: url('@/assets/image/star.svg');
-        }
     }
 
     &__main {
@@ -148,7 +129,7 @@
         gap: 20px;
     }
 
-    &__benefit {
+    &__features {
         padding-left: 15px;
         display: block;
         height: max-content;
