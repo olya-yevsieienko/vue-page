@@ -1,18 +1,21 @@
 <template>
     <div class="search">
-        <input
-            type="text"
-            class="search__input"
+        <TextInput
             placeholder="Поиск..."
+            class="search__input"
         />
-        <div class="search__img"></div>
+        <span class="search__image" />
     </div>
 </template>
 
 <script>
+import TextInput from '@/components/UI/TextInput.vue';
 
 export default {
     name: 'Search',
+    components: {
+        TextInput 
+    },
 };
 </script>
 
@@ -25,21 +28,10 @@ export default {
     width: 230px;
 
     &__input {
-        padding: 7px 15px;
-        width: 100%;
-        font-family: inherit;
-        font-size: 16px;
-        border: none;
-        border-radius: $border-radius;
-        box-shadow: $box-shadow;
-        outline: none;
+        width: 230px;
     }
 
-    &::placeholder {
-        color: $search;
-    }
-
-    &__img {
+    &__image {
         position: absolute;
         top: 3px;
         right: 3px;
@@ -49,12 +41,12 @@ export default {
         width: 30px;
         height: 30px;
         border-radius: $border-radius;
-        background: $violet;
+        background: $violet--100;
 
         &::after {
             content: url('@/assets/image/search.svg');
-            width: 15px;
-            height: 15px;
+            width: 16px;
+            height: 16px;
         }
     }
 }

@@ -1,4 +1,4 @@
-.item {
+.sidebar-item {
     list-style: none;
     cursor: pointer;
 
@@ -7,16 +7,18 @@
     }
 
     &--active {
-        color: $violet;
+        color: $violet--100;
     }
 
     &__info {
         display: flex;
         align-items: center;
         height: 25px;
+        text-decoration: none;
+        color: inherit;
     }
 
-    &__img {
+    &__image {
         margin-right: 20px;
         width: 24px;
     }
@@ -29,13 +31,13 @@
     &__list {
         margin: 22px 0 30px 12px;
         padding: 8px 0;
-        border-left: 1px solid $border;
+        border-left: 1px solid $gray--20;
     }
 
     &__list-item {
         margin-left: 32px;
         font-size: 12px;
-        color: $secondary-text;
+        color: $gray--80;
         cursor: pointer;
     }
 
@@ -53,6 +55,20 @@
     }
 
     &__sublist-item--active {
-        color: $violet;
+        color: $violet--100;
+    }
+
+    &-enter-active {
+        transition: all 0.5s ease-out;
+    }
+
+    &-leave-active {
+        transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+        transform: translateX(20px);
+        opacity: 0;
     }
 }

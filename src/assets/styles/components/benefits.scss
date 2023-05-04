@@ -1,4 +1,5 @@
 .benefits {
+    margin-top: 48px;
     margin-bottom: 50px;
 
     &__title {
@@ -27,7 +28,7 @@
         width: 50px;
         height: 50px;
         border-radius: 50%;
-        background: $light-green;
+        background: $green--40;
 
         &::after {
             content: url('@/assets/image/check.svg');
@@ -37,7 +38,7 @@
     &__body {
         margin-left: 25px;
         padding-left: 68px;
-        border-left: 1px solid $light-gray2;
+        border-left: 1px solid $gray--30;
     }
 
     &__text {
@@ -47,9 +48,9 @@
     &__skill {
         padding: 4px 12px;
         display: inline-block;
-        border: 1px solid $violet;
+        border: 1px solid $violet--100;
         border-radius: 20px;
-        color: $violet;
+        color: $violet--100;
 
         &:not(:last-child) {
             margin-right: 10px;

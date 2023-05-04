@@ -15,7 +15,7 @@
     }
 
     &::placeholder {
-        color: $search;
+        color: $gray--60;
     }
 
     &__img {
@@ -28,7 +28,7 @@
         width: 30px;
         height: 30px;
         border-radius: $border-radius;
-        background: $violet;
+        background: $violet--100;
 
         &::after {
             content: url('@/assets/image/search.svg');

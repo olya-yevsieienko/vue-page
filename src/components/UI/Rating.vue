@@ -1,28 +1,28 @@
 <template>
-    <div class='rating'>
+    <div class="rating">
         <div class="rating__stars" v-if="!isActive">
             <span
-                v-for='n in countOfSelectedStars'
-                :key='n'
-                class='rating__star rating__star--selected'
+                v-for="starNumber in countOfSelectedStars"
+                :key="`star-${starNumber}`"
+                class="rating__star rating__star--selected"
             />
             <span
-                v-for='n in countOfUnselectedStars'
-                :key='n'
-                class='rating__star rating__star--unselected'
+                v-for="starNumber in countOfUnselectedStars"
+                :key="`star-${starNumber}`"
+                class="rating__star rating__star--unselected"
             />
         </div>
-        <slot></slot>
     </div>
 </template>
 
 <script>
+import { MAX_RATING } from '@/assets/constants/api';
+
 export default {
     name: 'Rating',
     props: {
         rating: {
             type: Number,
-            required: false,
         }, 
         isActive: {
             type: Boolean,
@@ -31,10 +31,10 @@ export default {
     },
     computed: {
         countOfSelectedStars() {
-            return this.rating ? this.rating : 0;
+            return this.rating || 0;
         },
         countOfUnselectedStars() {
-            return (5 - this.countOfSelectedStars);
+            return (MAX_RATING - this.countOfSelectedStars);
         },
     }
 }

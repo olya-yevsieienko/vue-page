@@ -1,19 +1,17 @@
 <template>
     <div class="benefits">
-        <h4 class="benefits__title">
-            Преимущества
-        </h4>
+        <h4 class="benefits__title">Преимущества</h4>
 
         <ul class="benefits__list">
             <li
-                v-for="benefit in profession.benefits"
+                v-for="benefit in cours.benefits"
                 :key="benefit.name"
                 class="benefits__list-item"
             >
-                <div class="">
-                    <div class="benefits__check"></div>
+                <span>
+                    <span class="benefits__check" />
                     <strong>{{ benefit.name }}</strong>
-                </div>
+                </span>
 
                 <p class="benefits__body">
                     {{ benefit.body }}
@@ -21,13 +19,13 @@
             </li>
         </ul>
 
-        <div class="benefits__text">
-            {{ profession.perspective }}
-        </div>
+        <p class="benefits__text">
+            {{ cours.perspective }}
+        </p>
 
         <h4 class="benefits__title">Получаемые навыки</h4>
         <span
-            v-for="skill in profession.skills"
+            v-for="skill in cours.skills"
             :key="skill.name"
             class="benefits__skill"
         >
@@ -38,8 +36,9 @@
 
 <script>
 export default {
+    name: 'Benefits',
     props: {
-        profession: {
+        cours: {
             type: Object,
             required: true
         }

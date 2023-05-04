@@ -1,7 +1,7 @@
 <template>
     <div class="sorting">
         <SortItem
-            v-for="item in sortItems"
+            v-for="item in sortTypes"
             :key="item.id"
             :sortItem="item"
         />
@@ -9,27 +9,16 @@
 </template>
 
 <script>
-import SortItem from './SortItem.vue';
+import SortItem from '@/components/SortItem.vue';
 
 export default {
-    components: {SortItem},
-    data() {
-        return {
-            /**
-             * @todo
-             * Если ты не меняешь значения sortItems, то они не должны быть в data
-             * В data реактивно меняющиеся данные
-             * В данном случае у тебя не происходит изменения значений, поэтому нужно перенести этот массив
-             * в computed
-             */
-        };
+    name: 'Sorting',
+    components: {
+        SortItem
     },
-    computed: {
-        sortItems() {
-            return [
-                {id: 1, title: 'По рейтингу'},
-                {id: 2, title: 'По цене'},
-            ];
+    props: {
+        sortTypes: {
+            type: Array,
         }
     }
 };

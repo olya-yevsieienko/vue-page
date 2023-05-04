@@ -1,17 +1,9 @@
-function formatDate(str) {
-    const months = ['января', 'февраля', 'марта', 'апреля', 'майя', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-    const date = str.split('-');
+export default function formatDate(date, months) {
+    const dateData = date.split('-');
 
-    const day = removeNullAtBegining(date[2]);
-    const month = months[+removeNullAtBegining(date[1])];
-    const year = date[0];
+    const day = +dateData[2];
+    const month = months[+dateData[1]];
+    const year = dateData[0];
 
     return `${day} ${month} ${year}`;
 };
-
-function removeNullAtBegining(date) {
-    const temp = date.split('');
-    return temp[0] === '0' ? date.split(1) : date;
-}
-
-export default formatDate;

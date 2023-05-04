@@ -1,9 +1,6 @@
 <template>
     <div class="reviews">
-        <div class="reviews__user">
-            <ReviewUser />
-        </div>
- 
+        <ReviewUser :review="review" class="reviews__user" />
         <ReviewsForm />
     </div>
 </template>
@@ -13,7 +10,16 @@ import ReviewsForm from '@/components/Reviews/ReviewsForm.vue';
 import ReviewUser from '@/components/Reviews/ReviewUser.vue';
 
 export default {
-    components: { ReviewsForm, ReviewUser },
+    name: 'Reviews',
+    components: {
+        ReviewsForm, ReviewUser
+    },
+    props: {
+        review: {
+            type: Object,
+            required: true
+        }
+    }
 }
 </script>
 
@@ -21,7 +27,6 @@ export default {
 @import '@/assets/styles/utils/variables';
 
 .reviews {
-    margin-bottom: 60px;
     padding: 26px 30px 30px;
     box-shadow: $box-shadow;
 

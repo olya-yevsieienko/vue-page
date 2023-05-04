@@ -1,29 +1,18 @@
 <template>
-    <!--
-        @todo
-        Прочти руководство по оформлению, которое поможет избежать возможных ошибок
-        и приведёт код в единый, для всех проектов на vue, стиль
-        https://v3.ru.vuejs.org/ru/style-guide/#%D1%80%D0%B5%D0%BA%D0%BE%D0%BC%D0%B5%D0%BD%D0%B4%D0%B0%D1%86%D0%B8%D0%B8
-
-        (
-            P.S. обработчики событий в самом низу, если тебе нужен модификатор, то можно добавить последовательность
-            к одному слушателю, а не вешать ещё один, например @click.stop.prevent="someMethod"
-        )
-    -->
     <div
         class="sort"
-        @click="handleSelect"
         :class="{
             'sort--active': isActive,
         }"
+        @click="handleSelect"
     >
-        <div class="sort__img-wrap">
+        <div class="sort__image-wrap">
             <span
-                class="sort__img"
-                @click.stop="handleChangeSortDirection"
+                class="sort__image"
                 :class="{
-                    'sort__img--desc': sortDirection === 'desc',
+                    'sort__image--desc': sortDirection === 'desc',
                 }"
+                @click.stop="handleChangeSortDirection"
             />
         </div>
         <span class="sort__name">{{ sortItem.title }}</span>
@@ -31,12 +20,8 @@
 </template>
 
 <script>
-/**
- * @todo
- * Для vue 3 нужно выбрать единый стиль написания кода (options или composition).
- * Не стоит смешивать их (в файле App.vue у тебя composition, а тут options).
- */
 export default {
+    name: 'SortItem',
     props: {
         sortItem: {
             type: Object,

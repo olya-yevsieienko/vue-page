@@ -12,9 +12,8 @@ export default {
     props: {
         placeholder: {
             type: String,
-            required: false
-        }
-    }
+        },
+    },
 }
 </script>
 
@@ -22,9 +21,10 @@ export default {
 @import '@/assets/styles/utils/variables.scss';
 
 .input {
-    padding: 7px 12px;
+    padding: 8px 12px;
     display: block;
-    width: 218px;
+    height: 36px;
+    font-size: 16px;
     box-shadow: $box-shadow;
     border-radius: $border-radius;
 }

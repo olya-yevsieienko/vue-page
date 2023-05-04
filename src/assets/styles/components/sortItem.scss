@@ -6,19 +6,18 @@
 
     &--active {
         font-weight: 700;
-        color: $violet;
+        color: $violet--100;
     }
 
-    &--active &__img {
+    &--active &__image {
         visibility: visible;
     }
 
-    &__img-wrap {
-        margin-right: 8px;
+    &__image-wrap {
         padding: 10px 0;
     }
 
-    &__img {
+    &__image {
         display: block;
         width: 20px;
         height: 14px;
@@ -33,6 +32,7 @@
     }
 
     &__name {
+        margin-left: 8px;
         padding: 10px 0;
     }
 }

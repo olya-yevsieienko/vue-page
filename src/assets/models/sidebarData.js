@@ -2,9 +2,10 @@ const sidebarData = [
     {
         id: 1,
         src: 'course.svg',
-        title: 'Курсы',
+        title: 'курсы',
         options: [
             {
+                id: 1,
                 name: 'ДИЗАЙН',
                 list: [
                     'Photoshop',
@@ -14,6 +15,7 @@ const sidebarData = [
                 ]
             },
             {
+                id: 2,
                 name: 'РАЗРАБОТКА',
                 list: [
                     'Frontend',
@@ -21,10 +23,12 @@ const sidebarData = [
                 ]
             },
             {
+                id: 3,
                 name: 'АНАЛИТИКА',
                 list: []
             },
             {
+                id: 4,
                 name: 'МАРКЕТИНГ',
                 list: []
             }
@@ -33,19 +37,19 @@ const sidebarData = [
     {
         id: 2,
         src: 'services.svg',
-        title: 'Сервисы',
+        title: 'сервисы',
         options: []
     },
     {
         id: 3,
         src: 'books.svg',
-        title: 'Книги',
+        title: 'книги',
         options: []
     },
     {
         id: 4,
         src: 'goods.svg',
-        title: 'Товары',
+        title: 'товары',
         options: []
     }
 ]

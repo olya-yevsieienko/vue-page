@@ -12,10 +12,14 @@
 import SidebarItem from '@/components/Sidebar/SidebarItem.vue';
 
 export default {
-    components: {SidebarItem},
+    name: 'SidebarList',
+    components: {
+        SidebarItem
+    },
     props: {
         list: {
             type: Array,
+            required: true
         },
     },
 };

@@ -1,57 +1,65 @@
 <template>
-    <!-- 
-        В vue 3 допускается нахождение более одного элемента внутри template без корневого, а
-        в nuxt или vue 2 - нет (держи в голове эту инфу, чтоб потом не было проблем)
-    -->
-    <li
-        class="item"
-        :class="{
-            'item--active': isActiveLink
-        }"
-    >
-        <div
-            class="item__info"
-            @click="handleOpenList"
-        >
-            <img
-                :src="'src/assets/image/' + item.src"
-                :alt="item.title"
-                class="item__img"
-            />
-            <span class="item__name">
-                {{ item.title }}
-            </span>
-        </div>
-    </li>
-
-    <ul
-        v-if="isListOpen && listLength"
-        class="item__list"
-    >
+    <div>
         <li
-            v-for="listItem in item.options"
-            :key="listItem.id"
-            @click.stop="handleOpenSublist(listItem.id)"
-            class="item__list-item"
+            class="sidebar-item"
+            :class="{
+                'sidebar-item--active': isActiveLink
+            }"
         >
-            {{ listItem.name }}
-
-            <ul v-if="isSublistOpen">
+            <RouterLink :to="`${item.title}`"
+                class="sidebar-item__info"
+                @click="handleOpenList(item.title)"
+            >
+                <img
+                    :src="`src/assets/image/${item.src}`"
+                    :alt="item.title"
+                    class="sidebar-item__image"
+                />
+                <span class="sidebar-item__name">
+                    {{ capitalizeWord(item.title) }}
+                </span>
+            </RouterLink>
+        </li>
+    
+        <TransitionGroup name="sidebar-item">
+            <ul
+                v-if="isListOpen && item.options.length"
+                class="sidebar-item__list"
+            >
                 <li
-                    v-for="item in listItem.list"
-                    :key="item"
-                    class="item__sublist-item"
-                    @click.stop
+                    v-for="listItem in item.options"
+                    :key="listItem.name"
+                    class="sidebar-item__list-item"
+                    @click.stop="handleOpenSublist(listItem.name)"
                 >
-                    {{ item }}
+                    {{ listItem.name }}
+        
+                    <TransitionGroup name="sidebar-item">
+                        <ul v-if="isSublistOpen && (listItem.name === openedSublist)">
+                            <li
+                                v-for="sublistItem in listItem.list"
+                                :key="sublistItem"
+                                class="sidebar-item__sublist-item"
+                                @click.stop="handleFilterCourses(sublistItem)"
+                            >
+                                {{ sublistItem }}
+                            </li>
+                        </ul>
+                    </TransitionGroup>
                 </li>
             </ul>
-        </li>
-    </ul>
+        </TransitionGroup>
+    </div>
 </template>
 
 <script>
+import { useCoursesStore } from '@/stores/CoursesStore';
+import { useRouterStore } from '@/stores/RouterStore';
+import capitalizeWord from '@/assets/helpers/capitalazeWord';
+import CoursesVue from '../../pages/Courses.vue';
+
 export default {
+    name: 'SidebarItem',
     props: {
         item: {
             type: Object,
@@ -61,27 +69,46 @@ export default {
         return {
             isListOpen: false,
             isSublistOpen: false,
-            isActiveLink: false, 
-            /**
-             * @todo
-             * Ты не меняешь длину массива, поэтому в data этого быть не должно
-             */
+            isActiveLink: false,
+            openedList: '',
+            openedSublist: '',
         };
     },
-    methods: {
-        handleOpenList() {
-            this.isListOpen = !this.isListOpen;
-            this.isActiveLink = !this.isActiveLink;
-            this.isSublistOpen = false;
-        },
-        handleOpenSublist(id) {
-            this.isSublistOpen = !this.isSublistOpen;
-        },
+    setup() {
+        const coursesStore = useCoursesStore();
+        const routerStore = useRouterStore();
+
+        return { coursesStore, routerStore };
     },
-    computed: {
-        listLength() {
-           return this.item.options.length; 
+    methods: {
+        capitalizeWord,
+        // change
+        handleOpenList(listName) {
+            if (this.openedList === listName) {
+                this.isListOpen = false;
+                this.isSublistOpen = false;
+                this.coursesStore.filterCourses('');
+                this.openedList = '';
+            } else {
+                this.openedList = listName;
+                this.isListOpen = true;
+                this.isSublistOpen = true;
+            }
+
+            this.routerStore.changePath(listName);
+        },
+        handleOpenSublist(listItemName) {
+            if (this.openedSublist === listItemName) {
+                this.openedSublist = '';
+                this.isSublistOpen = false;
+            } else {
+                this.openedSublist = listItemName;
+                this.isSublistOpen = true;
+            }
+        },
+        handleFilterCourses(sublistItem) {
+            this.coursesStore.filterCourses(sublistItem);
         }
-    }
+    },
 };
 </script>

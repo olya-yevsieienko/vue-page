@@ -1,13 +1,14 @@
-export function getCorrectEndingForReviews(count) {
-    const baseWord = 'отзыв';
-    const testNum = count > 19 ? +count.toString().slice(-1) : count;
+export default function getCorrectEnding(count, baseWord) {
+    const numberToCutString = 19;
+    const testNum = count > numberToCutString
+        ? +count.toString().slice(-1)
+        : count;
 
-    switch (true) {
-        case (testNum === 0 || testNum > 4):
-            return baseWord + 'ов';
-        case (testNum > 1):
-            return baseWord + 'а';
-        default:
-            return baseWord;
+    if (testNum === 0 || testNum > 4) {
+        return `${baseWord}ов`;
+    } else if (testNum > 1) {
+        return `${baseWord}a`;
+    } else {
+        return baseWord;
     }
 }

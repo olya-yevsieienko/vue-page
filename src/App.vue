@@ -1,18 +1,26 @@
 <template>
     <div class="app">
-        <Layout />
+        <Layout>
+            <router-view :key="$route.path"></router-view>
+        </Layout>
     </div>
 </template>
 
 <script>
 import Layout from '@/components/Layout.vue';
+import Courses from '@/pages/Courses.vue';
+import courses from '@/assets/models/courses';
 import '@/assets/styles/style.scss';
 
 export default {
     name: 'App',
     components: {
         Layout,
+        Courses,
     },
+    created() {
+        this.courses = courses;
+    }
 };
 </script>
 
@@ -22,9 +30,7 @@ export default {
 .app {
     font-family: 'NanoSans', sans-serif;
     font-size: 14px;
-    min-height: 100vh;
-    width: 100%;
-    color: $main-text;
-    background: $page-bgr;
+    color: $gray--100;
+    background: $gray--00;
 }
 </style>

@@ -2,29 +2,28 @@
     <button
         class="button"
         :class="{
-            'button--violet': bgrColor === 'violet'
+            'button--violet': backgroundColor === 'violet'
         }"
     >
-        <slot></slot>
-    <img
-        v-if="iconSrc"
-        :src="'src/assets/image/' + iconSrc"
-        alt=""
-        class="button__icon"
+        <slot />
+        <img
+            v-if="iconSrc"
+            :src="`src/assets/image/${iconSrc}`"
+            alt=""
+            class="button__icon"
         >
     </button>
 </template>
 
 <script>
 export default {
+    name: 'Button',
     props: {
-        bgrColor: {
+        backgroundColor: {
             type: String,
-            required: false
         },
         iconSrc: {
             type: String,
-            required: false
         }   
     },
 }
@@ -41,29 +40,29 @@ export default {
     width: 148px;
     font-family: inherit;
     color: inherit;
-    border: 1px solid $light-gray;
+    border: 1px solid $gray--10;
     border-radius: $border-radius;
     cursor: pointer;
     transition: all .5s ease;
 
     &:hover {
-        background-color: $course-count;
+        background-color: $gray--40;
     }
 
     &--violet {
         color: white;
         border: none;
-        background-color: $violet;
+        background-color: $violet--100;
 
         transition: all .5s ease;
 
         &:hover {
-            background-color: $violet-hover;
+            background-color: $violet--80;
         }
     }
 
     &__icon {
-        margin-left: 11px;
+        margin-left: 12px;
     }
 }
 </style>

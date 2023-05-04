@@ -7,12 +7,12 @@
                     alt=""
                     class="review__photo"
                 >
-                <span class="review__name">{{ review.name }}: </span>
+                <span class="review__name">{{ review.name }}:</span>
                 <span class="review__title">{{ review.title }}</span>
             </div>
 
             <div class="review__block">
-                <span class="review__date">{{ date }}</span>
+                <span class="review__date">{{ formatDate(this.review.date, MONTHS) }}</span>
                 <Rating :rating="review.rating" :isActive="false" />
             </div>
         </div>
@@ -22,24 +22,34 @@
 </template>
 
 <script>
-import reviews from '@/assets/models/reviews';
 import Rating from '@/components/UI/Rating.vue';
+import reviews from '@/assets/models/reviews';
 import formatDate from '@/assets/helpers/formatDate';
+import { MONTHS } from '@/assets/constants/api';
 
 export default {
-  components: { Rating },
+    name: 'ReviewUser',
+    components: {
+        Rating
+    },
+    props: {
+        review: {
+            type: Object,
+            required: true
+        }
+    },
+    methods: {
+        formatDate
+    },
     computed: {
-        review() {
-            return reviews[0];
-        },
         userPhoto() {
             return this.review.photo !== ''
                 ? this.review.photo
                 : 'src/assets/image/user.svg';
         },
-        date() {
-            return formatDate(this.review.date);
-        }
+    },
+    created() {
+        this.MONTHS = MONTHS.REVIEWS;
     }
 }
 </script>

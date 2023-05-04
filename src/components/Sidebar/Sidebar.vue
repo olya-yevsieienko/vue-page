@@ -11,14 +11,13 @@ import sidebarData from '@/assets/models/sidebarData.js';
 import Search from '@/components/UI/Search.vue';
 
 export default {
+    name: 'Sidebar',
     components: {
         SidebarList,
         Search,
     },
-    data() {
-        return {
-            listOptions: sidebarData,
-        };
+    created() {
+        this.listOptions = sidebarData;
     },
 };
 </script>

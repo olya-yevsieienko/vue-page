@@ -1,22 +1,33 @@
 // COLORS
-$page-bgr: #f5f6f8;
-$main-text: #3b434e;
-$secondary-text: #787d85;
 
-$violet: #7653fc;
-$violet-hover: #9479ff;
-$light-gray: #ebebeb;
-$light-gray2 : #d2d2d2;
+// VIOLET
+$violet--100: #7653fc;
+$violet--80: #9479ff;
+
+// GOLD
 $gold: #dcb44e;
-$green: #1dc47e;
-$light-green: #c8f8e4;
-$red: #fc836d;
 
-$search: #a4a4a4;
-$course-count: #b3c0d9;
-$border: #dfdfdf;
+// GREEN:
+$green--100: #1dc47e;
+$green--40: #c8f8e4;
 
+// RED
+$red--100: #de0000;
+$red--50: #fc836d;
+
+//GRAY
+$gray--100: #3b434e;
+$gray--80: #787d85;
+$gray--60: #a4a4a4;
+$gray--40: #b3c0d9;
+$gray--30: #d2d2d2;
+$gray--20: #dfdfdf;
+$gray--10: #ebebeb;
+$gray--00: #f5f6f8;
+
+// BOX SHADOW
 $box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
 
 // SIZES
 $border-radius: 5px;
+$footer-height: 72px;

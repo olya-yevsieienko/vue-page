@@ -1,33 +1,34 @@
 <template>
     <div class="vacancies">
-        <h4 class="vacancies__title">Вакансии - Photoshop</h4>
+        <h3 class="vacancies__title">Вакансии - Photoshop</h3>
 
         <div class="vacancies__block">
-            <div class="vacancies__total">
+            <p class="vacancies__total">
                 <span class="vacancies__name">Всего вакансий</span>
                 <span class="vacancies__total-value">
-                    {{ profession.vacanciesTotal }}
+                    {{ cours.vacanciesTotal }}
                 </span>
-            </div>
+            </p>
 
             <ul class="vacancies__list">
                 <li
-                    v-for="vacancy in profession.vacanciesPrice"
+                    v-for="vacancy in cours.vacanciesPrice"
                     :key="vacancy.complexity"
                     class="vacancies__list-item"
                 >
                     <span class="vacancies__name">{{ vacancy.name }}</span>
-                    <span class="vacancies__price">{{ vacancy.price }}</span>
-                    <div class="vacancies__complexity">
+                    <span class="vacancies__price">{{ vacancy.price }} ₽ </span>
+                    
+                    <div class="vacancies__career-level">
                         <span
-                            v-for="n in vacancy.complexity"
-                            :key="n"
-                            class="vacancies__complexity-icon"
+                            v-for="levelNumber in vacancy.level"
+                            :key="`level-${levelNumber}`"
+                            class="vacancies__career-icon"
                         />
                         <span
-                            v-for="n in (3 - vacancy.complexity)"
-                            :key="n"
-                            class="vacancies__complexity-icon--disabled"
+                            v-for="levelNumber in (MAX_CAREER_LEVEL - vacancy.level)"
+                            :key="`level - ${levelNumber}`"
+                            class="vacancies__career-icon--disabled"
                         />
                     </div>
                 </li>
@@ -37,12 +38,18 @@
 </template>
 
 <script>
+import { MAX_CAREER_LEVEL } from '@/assets/constants/api';
+
 export default {
+    name: 'Vacancies',
     props: {
-        profession: {
+        cours: {
             type: Object,
             required: true,
         }
     },
+    created() {
+        this.MAX_CAREER_LEVEL = MAX_CAREER_LEVEL;
+    }
 }
 </script>

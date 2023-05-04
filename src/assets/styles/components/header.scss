@@ -1,36 +1,34 @@
 .header {
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 42px;
+    padding: 32px 88px 0 22px;
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 44px;
+    }
 
     &__block {
-        display: flex;
-    }
-
-    &__logo {
-        margin-right: 94px;
-        cursor: pointer;
-    }
-
-    &__title {
         display: flex;
         align-items: center;
     }
 
-    &__title-name {
-        margin-right: 20px;
-        font-size: 26px;
-        font-weight: 600;
+    &__logo {
+        cursor: pointer;
+    }
+
+    &__title {
+        @extend %h1;
+        margin-left: 104px;
     }
 
     &__course-count {
-        display: block;
+        margin-left: 20px;
         padding: 6px 10px;
+        display: block;
         font-weight: bold;
-        color: #fff;
-        background: $course-count;
+        color: white;
+        background: $gray--40;
         border-radius: 20px;
     }
 }
