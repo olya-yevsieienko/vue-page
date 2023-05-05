@@ -1,6 +1,6 @@
-import { createRouter, createWebHashHistory, createWebHistory } from 'vue-router';
-import Home from '@/pages/Home.vue';
+import { createRouter, createWebHistory } from 'vue-router';
 import Courses from '@/pages/Courses.vue';
+import Home from '@/pages/Home.vue';
 import Services from '@/pages/Services.vue';
 import Books from '@/pages/Books.vue';
 import Goods from '@/pages/Goods.vue';
@@ -16,4 +16,4 @@ const routes = [
 export const router = createRouter({
     history: createWebHistory(),
     routes
-})
+});

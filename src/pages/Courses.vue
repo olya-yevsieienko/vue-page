@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { useCoursesStore } from '@/stores/CoursesStore';
+import { useSidebarStore } from '@/stores/SidebarStore';
 import Cours from '@/components/Cours.vue';
 
 export default ({
@@ -18,23 +18,23 @@ export default ({
         Cours
     },
     setup() {
-        const coursesStore = useCoursesStore()
+        const sidebarStore = useSidebarStore()
 
-        return { coursesStore }
+        return { sidebarStore }
     },
     computed: {
         courses() {
-            if (this.coursesStore.filter) {
-                const filteredCourses = this.coursesStore.courses.filter(cours => (
-                    cours.name === this.coursesStore.filter
+            if (this.sidebarStore.selectedItem) {
+                const filteredCourses = this.sidebarStore.courses.filter(cours => (
+                    cours.name === this.sidebarStore.selectedItem
                 ))
-                this.coursesStore.coursesCount = filteredCourses.length;
+                this.sidebarStore.coursesCount = filteredCourses.length;
 
                 return filteredCourses;
                
             }
-            console.log(this.$route.params);
-            return this.coursesStore.courses
+
+            return this.sidebarStore.courses;
         }
     }
 })

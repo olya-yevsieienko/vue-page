@@ -11,16 +11,16 @@
                 <div class="header__block">
                     <h2 class="header__title">{{ title }}</h2>
                     <span
-                        v-if="coursesStore.filter"
+                        v-if="sidebarStore.selectedItem && routerStore.selectedSidebarLink === 'курсы'"
                         class="header__course-count"
                     >
-                        {{ coursesStore.coursesCount }}
+                        {{ sidebarStore.coursesCount }}
                     </span>
                 </div>
             </div>
             
             <Sorting
-                v-if="routerStore.path === 'курсы'"
+                v-if="routerStore.selectedSidebarLink === 'курсы'"
                 :sortTypes="sortTypes"
             />
         </div>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { useCoursesStore } from '@/stores/CoursesStore';
+import { useSidebarStore } from '@/stores/SidebarStore';
 import { useRouterStore } from '@/stores/RouterStore';
 import Sorting from '@/components/Sorting.vue';
 import sortTypes from '@/assets/models/sortTypes';
@@ -43,10 +43,10 @@ export default {
         this.sortTypes = sortTypes;
     },
     setup() {
-        const coursesStore = useCoursesStore();
+        const sidebarStore = useSidebarStore();
         const routerStore = useRouterStore();
 
-        return { coursesStore, routerStore };
+        return { sidebarStore, routerStore };
     },
     methods: {
         capitalazeWord
@@ -54,13 +54,15 @@ export default {
     computed: {
         title() {
             let title = '';
-            if (this.routerStore.path) {
-                title = capitalazeWord(this.routerStore.path);
+
+            if (this.routerStore.selectedSidebarLink) {
+                title = capitalazeWord(this.routerStore.selectedSidebarLink);
             }
 
-            if (this.coursesStore.filter) {
-                title += ` по ${this.coursesStore.filter}`;
+            if (this.sidebarStore.selectedItem) {
+                title += ` по ${this.sidebarStore.selectedItem}`;
             }
+
             return title;
         }
     }

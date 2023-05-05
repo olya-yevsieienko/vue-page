@@ -43,19 +43,12 @@
 
     &__sublist-item {
         font-weight: 600;
-
-        &:first-child {
-            margin-top: 12px;
-        }
     }
 
-    &__list-item:not(:last-child),
-    &__sublist-item:not(:last-child) {
-        margin-bottom: 10px;
-    }
-
-    &__sublist-item--active {
-        color: $violet--100;
+    &__list-item:not(:first-child),
+    &__sublist-item {
+        margin-top: 4px;
+        padding-top: 8px;
     }
 
     &-enter-active {

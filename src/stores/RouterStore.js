@@ -1,10 +1,12 @@
 import { defineStore } from "pinia";
 
 export const useRouterStore = defineStore('RouterStore', {
-    state: () => ({ path: '' }),
+    state: () => ({
+        selectedSidebarLink: '',
+    }),
     actions: {
-        changePath(path) {
-            this.path = path;
-        }
+        changeSelectedSidebarLink(path) {
+            this.selectedSidebarLink = path;
+        },
     }
 })

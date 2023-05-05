@@ -3,10 +3,10 @@
         <li
             class="sidebar-item"
             :class="{
-                'sidebar-item--active': isActiveLink
+                'sidebar-item--active': item.title === routerStore.selectedSidebarLink 
             }"
         >
-            <RouterLink :to="`${item.title}`"
+            <RouterLink :to="`/${item.title}`"
                 class="sidebar-item__info"
                 @click="handleOpenList(item.title)"
             >
@@ -23,7 +23,7 @@
     
         <TransitionGroup name="sidebar-item">
             <ul
-                v-if="isListOpen && item.options.length"
+                v-if="item.options.length && (item.title === routerStore.selectedSidebarLink)"
                 class="sidebar-item__list"
             >
                 <li
@@ -35,12 +35,15 @@
                     {{ listItem.name }}
         
                     <TransitionGroup name="sidebar-item">
-                        <ul v-if="isSublistOpen && (listItem.name === openedSublist)">
+                        <ul v-if="listItem.name === openedSublist">
                             <li
                                 v-for="sublistItem in listItem.list"
                                 :key="sublistItem"
                                 class="sidebar-item__sublist-item"
-                                @click.stop="handleFilterCourses(sublistItem)"
+                                :class="{
+                                    'sidebar-item--active': sublistItem === sidebarStore.selectedItem
+                                }"
+                                @click.stop="handleSelectCours(sublistItem)"
                             >
                                 {{ sublistItem }}
                             </li>
@@ -53,62 +56,44 @@
 </template>
 
 <script>
-import { useCoursesStore } from '@/stores/CoursesStore';
+import { useSidebarStore } from '@/stores/SidebarStore';
 import { useRouterStore } from '@/stores/RouterStore';
 import capitalizeWord from '@/assets/helpers/capitalazeWord';
-import CoursesVue from '../../pages/Courses.vue';
 
 export default {
     name: 'SidebarItem',
     props: {
         item: {
             type: Object,
+            required: true
         },
     },
     data() {
         return {
-            isListOpen: false,
-            isSublistOpen: false,
-            isActiveLink: false,
             openedList: '',
             openedSublist: '',
         };
     },
     setup() {
-        const coursesStore = useCoursesStore();
+        const sidebarStore = useSidebarStore();
         const routerStore = useRouterStore();
 
-        return { coursesStore, routerStore };
+        return { sidebarStore, routerStore };
     },
     methods: {
         capitalizeWord,
-        // change
         handleOpenList(listName) {
-            if (this.openedList === listName) {
-                this.isListOpen = false;
-                this.isSublistOpen = false;
-                this.coursesStore.filterCourses('');
-                this.openedList = '';
-            } else {
-                this.openedList = listName;
-                this.isListOpen = true;
-                this.isSublistOpen = true;
-            }
-
-            this.routerStore.changePath(listName);
+            this.openedList = this.openedList === listName ? '' : listName;
+            this.openedSublist = '';
+            this.sidebarStore.selectCours('');
+            this.routerStore.changeSelectedSidebarLink(listName);
         },
         handleOpenSublist(listItemName) {
-            if (this.openedSublist === listItemName) {
-                this.openedSublist = '';
-                this.isSublistOpen = false;
-            } else {
-                this.openedSublist = listItemName;
-                this.isSublistOpen = true;
-            }
+            this.openedSublist = this.openedSublist === listItemName ? '' : listItemName;
         },
-        handleFilterCourses(sublistItem) {
-            this.coursesStore.filterCourses(sublistItem);
-        }
-    },
+        handleSelectCours(sublistItem) {
+            this.sidebarStore.selectCours(sublistItem);
+        }    
+    }
 };
 </script>

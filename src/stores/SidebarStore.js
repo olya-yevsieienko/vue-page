@@ -1,17 +1,17 @@
 import { defineStore } from 'pinia';
 import courses from '@/assets/models/courses';
 
-export const useCoursesStore = defineStore('CoursesStore', {
+export const useSidebarStore = defineStore('SidebarStore', {
     state: () => ({
         courses,
-        filter: '',
+        selectedItem: '',
         sortType: '',
         sortDirection: '',
         coursesCount: 0,
     }),
     actions: {
-        filterCourses(coursName) {
-            this.filter = coursName;
+        selectCours(coursName) {
+            this.selectedItem = coursName;
         },
         selectSortType(type) {
             this.sortType = type;
@@ -20,4 +20,4 @@ export const useCoursesStore = defineStore('CoursesStore', {
             this.sortDirection = direction;
         },
     }
-})
+});
