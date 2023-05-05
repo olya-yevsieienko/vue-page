@@ -9,7 +9,18 @@
     color: white;
     font-size: 16px;
 
-    &__links {
-        gap: 40px;
+    &__links-list {
+        display: flex;
+    }
+
+    &__link {
+        display: flex;
+        align-items: center;
+        height: $footer-height;
+        cursor: pointer;
+
+        &:not(:first-child) {
+            margin-left: 40px;
+        }
     }
 }

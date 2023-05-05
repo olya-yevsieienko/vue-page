@@ -9,6 +9,7 @@
 </template>
 
 <script>
+import { useCoursesStore } from '@/stores/CoursesStore';
 import { useSidebarStore } from '@/stores/SidebarStore';
 import Cours from '@/components/Cours.vue';
 
@@ -18,24 +19,42 @@ export default ({
         Cours
     },
     setup() {
-        const sidebarStore = useSidebarStore()
+        const coursesStore = useCoursesStore();
+        const sidebarStore = useSidebarStore();
 
-        return { sidebarStore }
+        return { coursesStore, sidebarStore }
     },
     computed: {
         courses() {
-            if (this.sidebarStore.selectedItem) {
-                const filteredCourses = this.sidebarStore.courses.filter(cours => (
-                    cours.name === this.sidebarStore.selectedItem
-                ))
-                this.sidebarStore.coursesCount = filteredCourses.length;
+            let visibleCourses = this.coursesStore.courses;
 
-                return filteredCourses;
-               
+            if (this.sidebarStore.selectedItemOption) {
+                visibleCourses = this.coursesStore.courses.filter(cours => (
+                    cours.name === this.sidebarStore.selectedItemOption
+                ))
+                this.coursesStore.changeCoursesCount(visibleCourses.length);
             }
 
-            return this.sidebarStore.courses;
+            return visibleCourses;
         }
     }
 })
 </script>
+
+<style lang="scss" scoped>
+.courses {
+    &-enter-active {
+        transition: all 0.5s ease-out;
+    }
+
+    &-leave-active {
+        transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+}
+</style>

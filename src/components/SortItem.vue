@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import { useCoursesStore } from '../stores/CoursesStore';
+
 export default {
     name: 'SortItem',
     props: {
@@ -34,6 +36,11 @@ export default {
             sortDirection: 'asc',
         };
     },
+    setup() {
+        const coursesStore = useCoursesStore();
+
+        return { coursesStore };
+    },
     methods: {
         handleSelect() {
             this.isActive = !this.isActive;
@@ -41,9 +48,11 @@ export default {
             if (this.isActive) {
                 this.sortDirection = 'asc';
             }
+            this.coursesStore.selectSortType(this.sortItem.name);
         },
         handleChangeSortDirection() {
             this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+            this.coursesStore.selectSortDirection(this.sortDirection);
         },
     },
 };

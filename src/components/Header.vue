@@ -11,16 +11,16 @@
                 <div class="header__block">
                     <h2 class="header__title">{{ title }}</h2>
                     <span
-                        v-if="sidebarStore.selectedItem && routerStore.selectedSidebarLink === 'курсы'"
+                        v-if="sidebarStore.selectedItemOption && sidebarStore.selectedItem === 'курсы'"
                         class="header__course-count"
                     >
-                        {{ sidebarStore.coursesCount }}
+                        {{ coursesStore.coursesCount }}
                     </span>
                 </div>
             </div>
             
             <Sorting
-                v-if="routerStore.selectedSidebarLink === 'курсы'"
+                v-if="sidebarStore.selectedItem === 'курсы'"
                 :sortTypes="sortTypes"
             />
         </div>
@@ -28,8 +28,8 @@
 </template>
 
 <script>
+import { useCoursesStore } from '@/stores/CoursesStore';
 import { useSidebarStore } from '@/stores/SidebarStore';
-import { useRouterStore } from '@/stores/RouterStore';
 import Sorting from '@/components/Sorting.vue';
 import sortTypes from '@/assets/models/sortTypes';
 import capitalazeWord from '@/assets/helpers/capitalazeWord';
@@ -43,10 +43,10 @@ export default {
         this.sortTypes = sortTypes;
     },
     setup() {
+        const coursesStore = useCoursesStore();
         const sidebarStore = useSidebarStore();
-        const routerStore = useRouterStore();
 
-        return { sidebarStore, routerStore };
+        return { coursesStore, sidebarStore };
     },
     methods: {
         capitalazeWord
@@ -55,12 +55,12 @@ export default {
         title() {
             let title = '';
 
-            if (this.routerStore.selectedSidebarLink) {
-                title = capitalazeWord(this.routerStore.selectedSidebarLink);
+            if (this.sidebarStore.selectedItem) {
+                title = capitalazeWord(this.sidebarStore.selectedItem);
             }
 
-            if (this.sidebarStore.selectedItem) {
-                title += ` по ${this.sidebarStore.selectedItem}`;
+            if (this.sidebarStore.selectedItemOption && title === 'Курсы') {
+                title += ` по ${this.sidebarStore.selectedItemOption}`;
             }
 
             return title;

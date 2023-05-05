@@ -21,9 +21,9 @@
             <div class="cours__prices">
                 <div class="cours__block--column">
                     <p class="cours__block">
-                        <span class="cours__price">{{ cours.price }} ₽</span>
+                        <span class="cours__price">{{ splitNumber(cours.price) }} ₽</span>
                         <Tag class="cours__discount" styleColor="green">
-                            {{ cours.discount }} ₽
+                            {{ splitNumber(cours.discount) }} ₽
                         </Tag>
                     </p>
                     <span class="cours__caption">цена</span>
@@ -31,7 +31,7 @@
 
                 <div class="cours__block--column">
                     <span class="cours__price">
-                        {{ cours.credit }} ₽/мес
+                        {{ splitNumber(cours.credit) }} ₽/мес
                     </span>
                     <span class="cours__caption">кредит</span>
                 </div>
@@ -101,6 +101,7 @@ import Benefits from '@/components/Benefits.vue';
 import getCorrectEnding from '@/assets/helpers/getCorrectWordEnding.js';
 import { MAX_RATING } from '@/assets/constants/api';
 import reviews from '@/assets/models/reviews';
+import splitNumber from '@/assets/helpers/splitNumber';
 
 export default {
     name: 'Cours',
@@ -120,6 +121,7 @@ export default {
         }
     },
     methods: {
+        splitNumber,
         handleOpenReviews() {
             this.isReviewsOpened = !this.isReviewsOpened;
         },

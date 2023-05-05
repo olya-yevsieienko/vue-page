@@ -3,7 +3,7 @@
         <li
             class="sidebar-item"
             :class="{
-                'sidebar-item--active': item.title === routerStore.selectedSidebarLink 
+                'sidebar-item--active': item.title === sidebarStore.selectedItem 
             }"
         >
             <RouterLink :to="`/${item.title}`"
@@ -23,7 +23,7 @@
     
         <TransitionGroup name="sidebar-item">
             <ul
-                v-if="item.options.length && (item.title === routerStore.selectedSidebarLink)"
+                v-if="item.options.length && (item.title === sidebarStore.selectedItem)"
                 class="sidebar-item__list"
             >
                 <li
@@ -41,9 +41,9 @@
                                 :key="sublistItem"
                                 class="sidebar-item__sublist-item"
                                 :class="{
-                                    'sidebar-item--active': sublistItem === sidebarStore.selectedItem
+                                    'sidebar-item--active': sublistItem === sidebarStore.selectedItemOption
                                 }"
-                                @click.stop="handleSelectCours(sublistItem)"
+                                @click.stop="sidebarStore.selectSidebarLinkOption(sublistItem)"
                             >
                                 {{ sublistItem }}
                             </li>
@@ -56,8 +56,8 @@
 </template>
 
 <script>
+import { useCoursesStore } from '@/stores/CoursesStore';
 import { useSidebarStore } from '@/stores/SidebarStore';
-import { useRouterStore } from '@/stores/RouterStore';
 import capitalizeWord from '@/assets/helpers/capitalazeWord';
 
 export default {
@@ -75,25 +75,26 @@ export default {
         };
     },
     setup() {
+        const coursesStore = useCoursesStore();
         const sidebarStore = useSidebarStore();
-        const routerStore = useRouterStore();
 
-        return { sidebarStore, routerStore };
+        return { coursesStore, sidebarStore };
+    },
+    created() {
+
     },
     methods: {
         capitalizeWord,
         handleOpenList(listName) {
             this.openedList = this.openedList === listName ? '' : listName;
             this.openedSublist = '';
-            this.sidebarStore.selectCours('');
-            this.routerStore.changeSelectedSidebarLink(listName);
+            this.sidebarStore.selectSidebarLink(listName);
+            this.sidebarStore.selectSidebarLinkOption('');
         },
         handleOpenSublist(listItemName) {
             this.openedSublist = this.openedSublist === listItemName ? '' : listItemName;
-        },
-        handleSelectCours(sublistItem) {
-            this.sidebarStore.selectCours(sublistItem);
-        }    
-    }
+        }  
+    },
+    
 };
 </script>

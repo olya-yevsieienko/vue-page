@@ -2,14 +2,14 @@
     <footer class="footer">
         <span>OwlTop © 2020 - {{ nowYear }} Все права защищены  </span>
 
-        <div class="footer__links">
-            <span>
+        <ul class="footer__links-list">
+            <li class="footer__link">
                 Пользовательское соглашение
-            </span>
-            <span>
+            </li>
+            <li class="footer__link">
                 Политика конфиденциальности
-            </span>
-        </div>
+            </li>
+        </ul>
     </footer>
 </template>
 

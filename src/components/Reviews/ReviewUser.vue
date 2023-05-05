@@ -23,7 +23,6 @@
 
 <script>
 import Rating from '@/components/UI/Rating.vue';
-import reviews from '@/assets/models/reviews';
 import formatDate from '@/assets/helpers/formatDate';
 import { MONTHS } from '@/assets/constants/api';
 

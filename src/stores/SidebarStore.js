@@ -1,23 +1,16 @@
-import { defineStore } from 'pinia';
-import courses from '@/assets/models/courses';
+import { defineStore } from "pinia";
 
 export const useSidebarStore = defineStore('SidebarStore', {
     state: () => ({
-        courses,
         selectedItem: '',
-        sortType: '',
-        sortDirection: '',
-        coursesCount: 0,
+        selectedItemOption: '',
     }),
     actions: {
-        selectCours(coursName) {
-            this.selectedItem = coursName;
+        selectSidebarLink(linkName) {
+            this.selectedItem = linkName;
         },
-        selectSortType(type) {
-            this.sortType = type;
-        },
-        selectSortDirection(direction) {
-            this.sortDirection = direction;
+        selectSidebarLinkOption(linkName) {
+            this.selectedItemOption = linkName;
         },
     }
-});
+})

@@ -8,7 +8,6 @@
 
 <script>
 import Layout from '@/components/Layout.vue';
-import Courses from '@/pages/Courses.vue';
 import courses from '@/assets/models/courses';
 import '@/assets/styles/style.scss';
 
@@ -16,7 +15,6 @@ export default {
     name: 'App',
     components: {
         Layout,
-        Courses,
     },
     created() {
         this.courses = courses;
