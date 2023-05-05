@@ -24,6 +24,18 @@ export default ({
 
         return { coursesStore, sidebarStore }
     },
+    // data() {
+    //     return {
+    //         courses: this.coursesStore.courses
+    //     }
+    // },
+    // watch: {
+    //     courses: {
+    //         handler() {
+
+    //         }
+    //     }
+    // },
     computed: {
         courses() {
             let visibleCourses = this.coursesStore.courses;
@@ -40,21 +52,3 @@ export default ({
     }
 })
 </script>
-
-<style lang="scss" scoped>
-.courses {
-    &-enter-active {
-        transition: all 0.5s ease-out;
-    }
-
-    &-leave-active {
-        transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
-    }
-
-    &-enter-from,
-    &-leave-to {
-        transform: translateX(20px);
-        opacity: 0;
-    }
-}
-</style>

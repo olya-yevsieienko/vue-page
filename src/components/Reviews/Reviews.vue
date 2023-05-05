@@ -1,7 +1,7 @@
 <template>
     <div class="reviews">
         <ReviewUser :review="review" class="reviews__user" />
-        <ReviewsForm />
+        <ReviewsForm @create-review="handleCreateReview" />
     </div>
 </template>
 
@@ -18,6 +18,11 @@ export default {
         review: {
             type: Object,
             required: true
+        }
+    },
+    methods: {
+        handleCreateReview(review) {
+            console.log(review)
         }
     }
 }

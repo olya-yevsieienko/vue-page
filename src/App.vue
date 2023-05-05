@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/styles/utils/variables.scss';
+@import '@/assets/styles/utils/variables';
 
 .app {
     font-family: 'NanoSans', sans-serif;

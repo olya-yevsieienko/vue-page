@@ -3,6 +3,8 @@
         type="text"
         :placeholder="placeholder"
         class="input"
+        :value="modelValue"
+        @input="handleUpdateInput"
     >
 </template>
 
@@ -13,7 +15,15 @@ export default {
         placeholder: {
             type: String,
         },
+        modelValue: {
+            type: String,
+        }
     },
+    methods: {
+        handleUpdateInput(event) {
+            this.$emit('update:modelValue', event.target.value)
+        }
+    }
 }
 </script>
 

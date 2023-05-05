@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 
 export const useSidebarStore = defineStore('SidebarStore', {
     state: () => ({
-        selectedItem: '',
+        selectedItem: 'Курсы',
         selectedItemOption: '',
     }),
     actions: {

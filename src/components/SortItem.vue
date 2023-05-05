@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { useCoursesStore } from '../stores/CoursesStore';
+import { useCoursesStore } from '@/stores/CoursesStore';
 
 export default {
     name: 'SortItem',
@@ -53,6 +53,7 @@ export default {
         handleChangeSortDirection() {
             this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
             this.coursesStore.selectSortDirection(this.sortDirection);
+
         },
     },
 };

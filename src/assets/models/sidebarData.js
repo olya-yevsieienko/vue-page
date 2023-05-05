@@ -2,6 +2,7 @@ const sidebarData = [
     {
         id: 1,
         src: 'course.svg',
+        name: 'courses',
         title: 'курсы',
         options: [
             {
@@ -35,12 +36,14 @@ const sidebarData = [
     {
         id: 2,
         src: 'services.svg',
+        name: 'services',
         title: 'сервисы',
         options: []
     },
     {
         id: 3,
         src: 'books.svg',
+        name: 'books',
         title: 'книги',
         options: [
             {
@@ -60,6 +63,7 @@ const sidebarData = [
     {
         id: 4,
         src: 'goods.svg',
+        name: 'goods',
         title: 'товары',
         options: [
             {

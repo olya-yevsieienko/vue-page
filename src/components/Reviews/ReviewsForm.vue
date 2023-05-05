@@ -1,14 +1,19 @@
 <template>
-    <form class="form">
+    <form
+        class="form"
+        @submit.prevent
+    >
         <div class="form__block">
             <div class="form__inputs">
                 <TextInput
                     class="form__input"
                     placeholder="Имя"
+                    v-model="review.username"
                 />
                 <TextInput
                     class="form__input"
                     placeholder="Заголовок отзыва"
+                    v-model="review.reviewTitle"
                 />
             </div>
             
@@ -18,10 +23,18 @@
             </div>
         </div>
 
-        <textarea class="form__text" />
+        <textarea
+            class="form__text"
+            v-model="review.reviewBody"
+        />
 
         <div class="form__button">
-            <Button backgroundColor="violet">Отправить</Button>
+            <Button
+                backgroundColor="violet"
+                @click="handleSubmit"
+            >
+                Отправить
+            </Button>
             <span>* Перед публикацией отзыв пройдет предварительную модерацию и проверку</span>
         </div>
     </form>
@@ -37,9 +50,28 @@ export default {
     components: {
         TextInput, Button, Rating
     },
+    data() {
+        return {
+            review: {
+                username: '',
+                reviewTitle: '',
+                reviewBody: '',
+                rating: 0
+            }
+        }
+    },
     methods: {
         handleChangeRaiting() {
             return;
+        },
+        handleSubmit() {
+            this.$emit('create-review', this.review);
+            this.review = {
+                username: '',
+                reviewTitle: '',
+                reviewBody: '',
+                rating: 0
+            }
         }
     }
 }

@@ -6,7 +6,7 @@
                 'sidebar-item--active': item.title === sidebarStore.selectedItem 
             }"
         >
-            <RouterLink :to="`/${item.title}`"
+            <RouterLink :to="`/${item.name}`"
                 class="sidebar-item__info"
                 @click="handleOpenList(item.title)"
             >
