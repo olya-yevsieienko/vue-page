@@ -35,7 +35,6 @@ export default {
     methods: {
         handleChangeSearchQuery() {
             this.searchStore.setSearchQuery(this.searchQuery.toLowerCase());
-            console.log(this.searchQuery);
         }
     }
 };

@@ -1,6 +1,9 @@
 <template>
     <div class="rating">
-        <div class="rating__stars">
+        <div
+            class="rating__stars"
+            @mouseleave="starsOnHover = selectedStars"
+        >
             <span
                 v-for="starIndex in maxRating"
                 :key="starIndex"
@@ -46,16 +49,18 @@ export default {
     data() {
         return {
             selectedStars: this.rating,
+            visibleStars: this.rating,
             starsOnHover: 0,
         }
     },
     watch: {
         shouldBeCleared: function() {
+            this.visibleStars = 0;
             this.selectedStars = 0;
         },
         starsOnHover: function() {
             if (this.isActive) {
-                this.selectedStars = this.starsOnHover;
+                this.visibleStars = this.starsOnHover;
             }
         }
     },
@@ -63,13 +68,17 @@ export default {
         handleChangeRating(starIndex) {
             if (this.isActive) {
                 this.selectedStars = starIndex;
+                this.starsOnHover = starIndex;
                 this.$emit('set-rating', starIndex);
             }
+        },
+        handleChangeVisibleOfStars(starIndex) {
+            this.starsOnHover = starIndex;
         }
     },
     computed: {
         countOfSelectedStars() {
-            return this.selectedStars || 0;
+            return this.visibleStars || 0;
         },
         countOfUnselectedStars() {
             return (this.maxRating - this.countOfSelectedStars);
@@ -95,6 +104,7 @@ export default {
         display: block;
         width: 20px;
         height: 20px;
+        cursor: pointer;
 
         &:not(:first-child) {
             margin-left: 5px;
