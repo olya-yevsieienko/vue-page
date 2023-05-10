@@ -1,5 +1,10 @@
 <template>
-    <div class="rating">
+    <div
+        class="rating"
+        :class="{
+            'rating--active': isActive
+        }"
+    >
         <div
             class="rating__stars"
             @mouseleave="starsOnHover = selectedStars"
@@ -91,6 +96,10 @@ export default {
 .rating {
     position: relative;
 
+    &--active {
+        cursor: pointer;
+    }
+
     &__stars-selected {
         position: absolute;
         display: flex;
@@ -104,7 +113,6 @@ export default {
         display: block;
         width: 20px;
         height: 20px;
-        cursor: pointer;
 
         &:not(:first-child) {
             margin-left: 5px;
