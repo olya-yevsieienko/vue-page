@@ -47,7 +47,7 @@
             </div>
         </form>
 
-        <Transition name="form__modal">
+        <Transition name="transition-opacity">
             <ModalWindow v-if="isModalOpen" @close="isModalOpen = false">
                 Спасибо за отзыв!
             </ModalWindow>
@@ -84,7 +84,7 @@ export default {
         },
         handleSubmit() {
             if (this.review.username.length && this.review.reviewTitle.length
-                && this.review.reviewBody.length && this.review.rating !== 0) {
+                && this.review.reviewBody.length && this.review.rating) {
                 this.$emit('create-review', this.review);
                 this.isModalOpen = true;
                 this.isFormSubmitted = true;

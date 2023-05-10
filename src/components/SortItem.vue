@@ -43,7 +43,7 @@ export default {
     },
     methods: {
         handleSelect(type) {
-            this.activeType = this.activeType === type ? '' : type;
+            this.activeType = type;
             this.sortOrder = 'asc'
             this.coursesStore.selectSortType(this.activeType);
             this.coursesStore.selectSortOrder('asc');

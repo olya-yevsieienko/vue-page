@@ -21,12 +21,12 @@
             </RouterLink>
         </li>
     
-        <TransitionGroup name="sidebar-item">
+        <TransitionGroup name="transition-transform">
             <ul
                 v-if="item.options.length && (item.title === sidebarStore.selectedItem)"
                 class="sidebar-item__list"
             >
-                <li
+                <li 
                     v-for="listItem in item.options"
                     :key="listItem.name"
                     class="sidebar-item__list-item"
@@ -34,7 +34,7 @@
                 >
                     {{ listItem.name }}
         
-                    <TransitionGroup name="sidebar-item">
+                    <TransitionGroup name="transition-transform">
                         <ul v-if="listItem.name === openedSublist">
                             <li
                                 v-for="sublistItem in listItem.list"

@@ -1,10 +1,12 @@
 <template>
     <div class="courses">
-        <Cours
-            v-for="cours in courses"
-            :key="cours.id"
-            :cours="cours"
-        />
+        <TransitionGroup name="transition-transform">
+            <Cours
+                v-for="cours in courses"
+                :key="cours.id"
+                :cours="cours"
+            />
+        </TransitionGroup>
     </div>
 </template>
 

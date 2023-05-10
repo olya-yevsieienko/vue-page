@@ -6,14 +6,18 @@
                 :key="starIndex"
                 class="rating__star rating__star--unselected"
                 @click="handleChangeRating(starIndex)"
+                @mouseover="starsOnHover = starIndex"
             />
             <div class="rating__stars-selected">
-                <span
-                    v-for="starIndex in countOfSelectedStars"
-                    :key="starIndex"
-                    class="rating__star rating__star--selected"
-                    @click="handleChangeRating(starIndex)"
-                />
+                <TransitionGroup name="transition-opacity">
+                    <span
+                        v-for="starIndex in countOfSelectedStars"
+                        :key="starIndex"
+                        class="rating__star rating__star--selected"
+                        @click="handleChangeRating(starIndex)"
+                        @mouseover="starsOnHover = starIndex"
+                    />
+                </TransitionGroup>
             </div>
         </div>
     </div>
@@ -30,10 +34,10 @@ export default {
             default: MAX_RATING
         },
         rating: {
-            type: Number,
+            type: Number
         }, 
         isActive: {
-            type: Boolean,
+            type: Boolean
         },
         shouldBeCleared: {
             type: Boolean
@@ -41,12 +45,18 @@ export default {
     },
     data() {
         return {
-            selectedStars: this.rating
+            selectedStars: this.rating,
+            starsOnHover: 0,
         }
     },
     watch: {
         shouldBeCleared: function() {
             this.selectedStars = 0;
+        },
+        starsOnHover: function() {
+            if (this.isActive) {
+                this.selectedStars = this.starsOnHover;
+            }
         }
     },
     methods: {
@@ -97,10 +107,6 @@ export default {
         &--unselected {
             background: url('@/assets/image/star.svg');
             
-        }
-        
-        &:hover {
-            background: url('@/assets/image/star-selected.svg');
         }
     }
 }

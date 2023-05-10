@@ -19,10 +19,12 @@
                 </div>
             </div>
             
-            <Sorting
-                v-if="sidebarStore.selectedItem === 'курсы'"
-                :sortTypes="sortTypes"
-            />
+            <Transition name="transition-opacity">
+                <Sorting
+                    v-if="sidebarStore.selectedItem === 'курсы'"
+                    :sortTypes="sortTypes"
+                />
+            </Transition>
         </div>
     </div>
 </template>
