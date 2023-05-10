@@ -11,8 +11,9 @@
 <script>
 import { useCoursesStore } from '@/stores/CoursesStore';
 import { useSidebarStore } from '@/stores/SidebarStore';
+import { useSearchStore } from '@/stores/SearchStore';
 import Cours from '@/components/Cours.vue';
-import sortCourses from '../assets/helpers/sortCourses';
+import sortCourses from '@/assets/helpers/sortCourses';
 
 export default ({
     name: 'Courses',
@@ -22,20 +23,12 @@ export default ({
     setup() {
         const coursesStore = useCoursesStore();
         const sidebarStore = useSidebarStore();
+        const searchStore = useSearchStore();
 
-        return { coursesStore, sidebarStore }
+        return { coursesStore, sidebarStore, searchStore }
     },
-    // data() {
-    //     return {
-    //         courses: this.coursesStore.courses
-    //     }
-    // },
     // watch: {
-    //     courses: {
-    //         handler() {
-
-    //         }
-    //     }
+    //     
     // },
     computed: {
         courses() {
@@ -48,12 +41,19 @@ export default ({
                 this.coursesStore.changeCoursesCount(visibleCourses.length);
             }
 
+            
             if (this.coursesStore.sorting.type) {
                 visibleCourses = sortCourses(
                     this.coursesStore.sorting.type,
                     this.coursesStore.sorting.order,
                     visibleCourses
                 )
+            }
+            
+            if (this.searchStore.searchQuery) {
+                visibleCourses = [...visibleCourses].filter(cours => (
+                    cours.name.toLowerCase().includes(this.searchStore.searchQuery)
+                ))
             }
 
             return visibleCourses;

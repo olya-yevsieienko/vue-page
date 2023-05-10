@@ -51,7 +51,6 @@ export default {
         handleChangeSortOrder() {
             this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
             this.coursesStore.selectSortOrder(this.sortOrder);
-            console.log(this.coursesStore.sorting.order);
         },
     },
     computed: {

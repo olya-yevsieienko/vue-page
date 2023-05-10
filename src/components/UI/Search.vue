@@ -3,19 +3,41 @@
         <TextInput
             placeholder="Поиск..."
             class="search__input"
+            v-model="searchQuery"
+            v-on:keyup.enter="handleChangeSearchQuery"
         />
-        <span class="search__image" />
+        <span
+            class="search__image"
+            @click="handleChangeSearchQuery"
+        />
     </div>
 </template>
 
 <script>
 import TextInput from '@/components/UI/TextInput.vue';
+import { useSearchStore } from '@/stores/SearchStore';
 
 export default {
     name: 'Search',
     components: {
         TextInput 
     },
+    data() {
+        return {
+            searchQuery: ''
+        }
+    },
+    setup() {
+        const searchStore = useSearchStore();
+
+        return { searchStore };
+    },
+    methods: {
+        handleChangeSearchQuery() {
+            this.searchStore.setSearchQuery(this.searchQuery.toLowerCase());
+            console.log(this.searchQuery);
+        }
+    }
 };
 </script>
 

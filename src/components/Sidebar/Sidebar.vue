@@ -1,6 +1,8 @@
 <template>
     <div class="sidebar">
-        <Search class="sidebar__search" />
+        <Search
+            class="sidebar__search"
+        />
         <SidebarList :list="listOptions" />
     </div>
 </template>
@@ -16,9 +18,14 @@ export default {
         SidebarList,
         Search,
     },
+    data() {
+        return {
+            searchQuery: ''
+        }
+    },
     created() {
         this.listOptions = sidebarData;
-    },
+    }
 };
 </script>
 
