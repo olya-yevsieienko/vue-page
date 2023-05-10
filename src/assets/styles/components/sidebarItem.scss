@@ -2,10 +2,6 @@
     list-style: none;
     cursor: pointer;
 
-    &:not(:last-child) {
-        margin-bottom: 22px;
-    }
-
     &--active {
         color: $violet--100;
     }

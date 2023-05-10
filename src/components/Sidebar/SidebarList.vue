@@ -1,9 +1,10 @@
 <template>
-    <ul>
+    <ul class="sidebar-list">
         <SidebarItem
             v-for="item in list"
             :key="item.id"
             :item="item"
+            class="sidebar-list__item"
         />
     </ul>
 </template>
@@ -24,3 +25,13 @@ export default {
     },
 };
 </script>
+
+<style lang="scss" scoped>
+.sidebar-list {
+    &__item {
+        &:not(:first-child) {
+            margin-top: 20px;
+        }
+    }
+}
+</style>
