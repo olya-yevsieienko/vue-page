@@ -1,6 +1,6 @@
 <template>
     <div>
-            <form
+        <form
             class="form"
             @submit.prevent
         >
@@ -20,7 +20,12 @@
             
                 <div class="form__grade">
                     <span>Оценка:</span>
-                    <Rating :isActive="false" />
+                    <StarRating
+                        :isActive="true"
+                        v-model="review.rating"
+                        :shouldBeCleared="isFormSubmitted"
+                        @set-rating="handleGetRating"
+                    />
                 </div>
             </div>
 
@@ -44,7 +49,7 @@
 
         <Transition name="form__modal">
             <ModalWindow v-if="isModalOpen" @close="isModalOpen = false">
-            Спасибо за отзыв!
+                Спасибо за отзыв!
             </ModalWindow>
         </Transition>
     </div>
@@ -53,13 +58,13 @@
 <script>
 import Button from '@/components/UI/Button.vue';
 import TextInput from '@/components/UI/TextInput.vue';
-import Rating from '@/components/UI/Rating.vue';
+import StarRating from '@/components/UI/StarRating.vue';
 import ModalWindow from '@/components/UI/ModalWindow.vue';
 
 export default {
     name: 'ReviewForm',
     components: {
-        TextInput, Button, Rating, ModalWindow
+        TextInput, Button, StarRating, ModalWindow
     },
     data() {
         return {
@@ -70,24 +75,26 @@ export default {
                 rating: 0
             },
             isModalOpen: false,
+            isFormSubmitted: false,
         }
     },
     methods: {
-        handleChangeRaiting() {
-            return;
+        handleGetRating(rating) {
+            this.review.rating = rating;
         },
         handleSubmit() {
             if (this.review.username.length && this.review.reviewTitle.length
-                && this.review.reviewBody.length || this.review.rating !== 0) {
+                && this.review.reviewBody.length && this.review.rating !== 0) {
                 this.$emit('create-review', this.review);
-
+                this.isModalOpen = true;
+                this.isFormSubmitted = true;
+                    
                 this.review = {
                     username: '',
                     reviewTitle: '',
                     reviewBody: '',
                     rating: 0
                 };
-                this.isModalOpen = true;
             }
         }
     }

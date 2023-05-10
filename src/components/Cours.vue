@@ -42,10 +42,10 @@
                     </p>
 
                     <div class="cours__block--column">
-                        <Rating
+                        <StarRating
+                            class="cours__rating"
                             :rating="cours.rating"
                             :isActive="false"
-                            class="cours__rating"
                         />
                         <span class="cours__caption">
                             {{ cours.reviews }} {{ reviewWord }}
@@ -113,7 +113,7 @@ import Reviews from '@/components/Reviews/Reviews.vue';
 import Vacancies from '@/components/Vacancies.vue';
 import Benefits from '@/components/Benefits.vue';
 import Button from '@/components/UI/Button.vue';
-import Rating from '@/components/UI/Rating.vue';
+import StarRating from '@/components/UI/StarRating.vue';
 import Tag from '@/components/UI/Tag.vue';
 import getCorrectEnding from '@/assets/helpers/getCorrectWordEnding.js';
 import splitNumber from '@/assets/helpers/splitNumber';
@@ -123,7 +123,7 @@ import reviews from '@/assets/models/reviews';
 export default {
     name: 'Cours',
     components: {
-        Button, Rating, Tag, Reviews, Vacancies, Benefits
+        Button, StarRating, Tag, Reviews, Vacancies, Benefits
     },
     props: {
         cours: {

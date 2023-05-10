@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         handleCreateReview(review) {
-            console.log(review)
+            console.log(review);
         }
     }
 }

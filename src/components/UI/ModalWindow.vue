@@ -17,7 +17,6 @@ export default {
     props: {
         isModalOpen: {
             type: Boolean,
-            required: true
         }
     },
     methods: {
