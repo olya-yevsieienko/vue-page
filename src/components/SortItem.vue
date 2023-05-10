@@ -2,19 +2,19 @@
     <div
         class="sort"
         :class="{
-            'sort--active': isActive,
+            'sort--active': activeLink
         }"
-        @click="handleSelect"
+        @click="handleSelect(sortItem.name)"
     >
-        <div class="sort__image-wrap">
-            <span
-                class="sort__image"
-                :class="{
-                    'sort__image--desc': sortDirection === 'desc',
-                }"
-                @click.stop="handleChangeSortDirection"
-            />
-        </div>
+        <img
+            v-show="activeLink"
+            class="sort__image"
+            :class="{
+                'sort__image--desc': sortOrder === 'desc'
+            }"
+            src="src/assets/image/sort.svg"
+            @click.stop="handleChangeSortOrder"
+        >
         <span class="sort__name">{{ sortItem.title }}</span>
     </div>
 </template>
@@ -32,8 +32,8 @@ export default {
     },
     data() {
         return {
-            isActive: false,
-            sortDirection: 'asc',
+            activeType: '',
+            sortOrder: 'asc',
         };
     },
     setup() {
@@ -42,19 +42,22 @@ export default {
         return { coursesStore };
     },
     methods: {
-        handleSelect() {
-            this.isActive = !this.isActive;
-
-            if (this.isActive) {
-                this.sortDirection = 'asc';
-            }
-            this.coursesStore.selectSortType(this.sortItem.name);
+        handleSelect(type) {
+            this.activeType = this.activeType === type ? '' : type;
+            this.sortOrder = 'asc'
+            this.coursesStore.selectSortType(this.activeType);
+            this.coursesStore.selectSortOrder('asc');
         },
-        handleChangeSortDirection() {
-            this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
-            this.coursesStore.selectSortDirection(this.sortDirection);
-
+        handleChangeSortOrder() {
+            this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
+            this.coursesStore.selectSortOrder(this.sortOrder);
+            console.log(this.coursesStore.sorting.order);
         },
     },
+    computed: {
+        activeLink() {
+            return this.coursesStore.sorting.type === this.sortItem.name;
+        }
+    } 
 };
 </script>

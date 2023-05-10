@@ -14,7 +14,7 @@ export const useCoursesStore = defineStore('CoursesStore', {
         selectSortType(type) {
             this.sorting.type = type;
         },
-        selectSortDirection(direction) {
+        selectSortOrder(direction) {
             this.sorting.order = direction;
         },
         changeCoursesCount(coursesLength) {

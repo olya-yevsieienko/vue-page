@@ -1,5 +1,5 @@
 export default function sortCourses(type, order, courses) {
-    const sortingOrder = order === 'asc' ? 1 : -1;
+    const sortingOrder = order === 'asc' ? -1 : 1;
     let sortedArray = [];
 
     switch (type) {

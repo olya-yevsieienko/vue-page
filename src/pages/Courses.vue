@@ -12,6 +12,7 @@
 import { useCoursesStore } from '@/stores/CoursesStore';
 import { useSidebarStore } from '@/stores/SidebarStore';
 import Cours from '@/components/Cours.vue';
+import sortCourses from '../assets/helpers/sortCourses';
 
 export default ({
     name: 'Courses',
@@ -45,6 +46,14 @@ export default ({
                     cours.name === this.sidebarStore.selectedItemOption
                 ))
                 this.coursesStore.changeCoursesCount(visibleCourses.length);
+            }
+
+            if (this.coursesStore.sorting.type) {
+                visibleCourses = sortCourses(
+                    this.coursesStore.sorting.type,
+                    this.coursesStore.sorting.order,
+                    visibleCourses
+                )
             }
 
             return visibleCourses;
