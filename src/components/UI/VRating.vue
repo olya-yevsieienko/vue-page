@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { MAX_RATING } from '@/assets/constants/api';
+import { MAX_RATING } from '@/assets/constants/reviewConstants';
 
 export default {
     name: 'VRating',

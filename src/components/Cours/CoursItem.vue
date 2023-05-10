@@ -112,18 +112,15 @@
 import ReviewItem from '@/components/Review/ReviewItem.vue';
 import CoursVacancies from '@/components/Cours/CoursVacancies.vue';
 import CoursBenefits from '@/components/Cours/CoursBenefits.vue';
-import VButton from '@/components/UI/VButton.vue';
-import VRating from '@/components/UI/VRating.vue';
-import VTag from '@/components/UI/VTag.vue';
 import getCorrectEnding from '@/assets/helpers/getCorrectWordEnding.js';
 import splitNumber from '@/assets/helpers/splitNumber';
-import { MAX_RATING } from '@/assets/constants/api';
+import { MAX_RATING } from '@/assets/constants/reviewConstants';
 import reviews from '@/assets/models/reviews';
 
 export default {
     name: 'CoursItem',
     components: {
-        VButton, VRating, VTag, ReviewItem, CoursVacancies, CoursBenefits
+        ReviewItem, CoursVacancies, CoursBenefits
     },
     props: {
         cours: {
@@ -137,6 +134,20 @@ export default {
             isDetailsOpened: false
         }
     },
+    computed: {
+        maxRating() {
+            return MAX_RATING;
+        },
+        countOfUnselectedStars() {
+            return (this.maxRating - this.cours.rating);
+        },
+        reviewWord() {
+            return getCorrectEnding(this.cours.reviews, 'отзыв');
+        },
+        review() {
+            return reviews.find(review => review.coursId === this.cours.id);
+        }
+    },
     methods: {
         splitNumber,
         handleOpenReviews() {
@@ -146,16 +157,5 @@ export default {
             this.isDetailsOpened = !this.isDetailsOpened;
         },
     },
-    computed: {
-        countOfUnselectedStars() {
-            return (MAX_RATING - this.cours.rating);
-        },
-        reviewWord() {
-            return getCorrectEnding(this.cours.reviews, 'отзыв');
-        },
-        review() {
-            return reviews.find(review => review.coursId === this.cours.id);
-        }
-    }
 }
 </script>

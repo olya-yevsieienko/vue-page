@@ -19,6 +19,7 @@ export default {
     props: {
         sortTypes: {
             type: Array,
+            required: true
         }
     }
 };

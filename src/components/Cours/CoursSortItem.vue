@@ -27,8 +27,13 @@ export default {
     props: {
         sortItem: {
             type: Object,
-            required: true,
+            required: true
         },
+    },
+    setup() {
+        const coursesStore = useCoursesStore();
+
+        return { coursesStore };
     },
     data() {
         return {
@@ -36,10 +41,10 @@ export default {
             sortOrder: 'asc',
         };
     },
-    setup() {
-        const coursesStore = useCoursesStore();
-
-        return { coursesStore };
+    computed: {
+        activeLink() {
+            return this.coursesStore.sorting.type === this.sortItem.name;
+        }
     },
     methods: {
         handleSelect(type) {
@@ -53,10 +58,5 @@ export default {
             this.coursesStore.selectSortOrder(this.sortOrder);
         },
     },
-    computed: {
-        activeLink() {
-            return this.coursesStore.sorting.type === this.sortItem.name;
-        }
-    } 
 };
 </script>

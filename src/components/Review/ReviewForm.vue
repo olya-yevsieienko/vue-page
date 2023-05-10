@@ -56,16 +56,8 @@
 </template>
 
 <script>
-import VButton from '@/components/UI/VButton.vue';
-import VTextInput from '@/components/UI/VTextInput.vue';
-import VModal from '@/components/UI/VModal.vue';
-import VRating from '@/components/UI/VRating.vue';
-
 export default {
     name: 'ReviewForm',
-    components: {
-        VTextInput, VButton, VRating, VModal
-    },
     data() {
         return {
             review: {

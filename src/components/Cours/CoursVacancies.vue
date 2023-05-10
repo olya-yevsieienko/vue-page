@@ -26,7 +26,7 @@
                             class="vacancies__career-icon"
                         />
                         <span
-                            v-for="levelNumber in (MAX_CAREER_LEVEL - vacancy.level)"
+                            v-for="levelNumber in (maxCareerLevel - vacancy.level)"
                             :key="`level - ${levelNumber}`"
                             class="vacancies__career-icon--disabled"
                         />
@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { MAX_CAREER_LEVEL } from '@/assets/constants/api';
+import { MAX_CAREER_LEVEL } from '@/assets/constants/reviewConstants';
 
 export default {
     name: 'CoursVacancies',
@@ -48,8 +48,10 @@ export default {
             required: true,
         }
     },
-    created() {
-        this.MAX_CAREER_LEVEL = MAX_CAREER_LEVEL;
+    computed: {
+        maxCareerLevel() {
+            return MAX_CAREER_LEVEL;
+        }
     }
 }
 </script>

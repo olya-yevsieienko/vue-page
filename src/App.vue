@@ -8,16 +8,12 @@
 
 <script>
 import TheLayout from '@/components/TheLayout.vue';
-import courses from '@/assets/models/courses';
 import '@/assets/styles/style.scss';
 
 export default {
     name: 'App',
     components: {
         TheLayout,
-    },
-    created() {
-        this.courses = courses;
     }
 };
 </script>

@@ -29,9 +29,6 @@ export default ({
 
         return { coursesStore, sidebarStore, searchStore }
     },
-    // watch: {
-    //     
-    // },
     computed: {
         courses() {
             let visibleCourses = this.coursesStore.courses;

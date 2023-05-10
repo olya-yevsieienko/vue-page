@@ -68,20 +68,17 @@ export default {
             required: true
         },
     },
-    data() {
-        return {
-            openedList: '',
-            openedSublist: '',
-        };
-    },
     setup() {
         const coursesStore = useCoursesStore();
         const sidebarStore = useSidebarStore();
 
         return { coursesStore, sidebarStore };
     },
-    created() {
-
+    data() {
+        return {
+            openedList: '',
+            openedSublist: '',
+        };
     },
     methods: {
         capitalizeWord,

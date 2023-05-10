@@ -22,16 +22,12 @@ import TheFooter from '@/components/TheFooter.vue';
 export default {
     name: 'TheLayout',
     components: {
-        TheHeader, 
-        TheSidebar, 
-        TheFooter
+        TheHeader, TheSidebar, TheFooter
     }
 }
 </script>
 
 <style lang="scss">
-@import '@/assets/styles/utils/variables';
-
 .layout {
     width: 100%;
 

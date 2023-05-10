@@ -13,12 +13,8 @@
 
 <script>
 export default {
-    name: 'VModal',
-    props: {
-        isModalOpen: {
-            type: Boolean,
-        }
-    },
+    name: 'ModalWindow',
+    emits: ['close'],
     methods: {
         handleCloseModal() {
             this.$emit('close');
@@ -28,8 +24,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/styles/utils/variables';
-
 .modal-window {
     position: fixed;
     top: 0;

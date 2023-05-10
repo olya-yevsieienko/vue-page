@@ -4,7 +4,7 @@
             placeholder="Поиск..."
             class="search__input"
             v-model="searchQuery"
-            v-on:keyup.enter="handleChangeSearchQuery"
+            @keyup.enter="handleChangeSearchQuery"
         />
         <span
             class="search__image"
@@ -14,23 +14,19 @@
 </template>
 
 <script>
-import VTextInput from '@/components/UI/VTextInput.vue';
 import { useSearchStore } from '@/stores/SearchStore';
 
 export default {
     name: 'VSearch',
-    components: {
-        VTextInput 
-    },
-    data() {
-        return {
-            searchQuery: ''
-        }
-    },
     setup() {
         const searchStore = useSearchStore();
 
         return { searchStore };
+    },
+    data() {
+        return {
+            searchQuery: '',
+        }
     },
     methods: {
         handleChangeSearchQuery() {
@@ -40,9 +36,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
-@import '@/assets/styles/utils/variables.scss';
-
+<style lang="scss" scoped>
 .search {
     position: relative;
     display: block;

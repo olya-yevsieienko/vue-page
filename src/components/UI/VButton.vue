@@ -1,9 +1,6 @@
 <template>
     <button
-        class="button"
-        :class="{
-            'button--violet': backgroundColor === 'violet'
-        }"
+        :class="['button', buttonBackground]"
     >
         <slot />
         <img
@@ -21,17 +18,22 @@ export default {
     props: {
         backgroundColor: {
             type: String,
+            default: ''
         },
         iconSrc: {
             type: String,
+            default: ''
         }   
     },
+    computed: {
+        buttonBackground() {
+            return this.backgroundColor ? `button--${this.backgroundColor}` : '';
+        }
+    }
 }
 </script>
 
-<style lang="scss">
-@import '@/assets/styles/utils/variables.scss';
-
+<style lang="scss" scoped>
 .button {
     padding: 10px;
     display: flex;

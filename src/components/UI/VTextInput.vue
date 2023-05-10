@@ -14,11 +14,14 @@ export default {
     props: {
         placeholder: {
             type: String,
+            default: '',
         },
         modelValue: {
             type: String,
+            default: '',
         }
     },
+    emits: ['update:modelValue'],
     methods: {
         handleUpdateInput(event) {
             this.$emit('update:modelValue', event.target.value)
@@ -28,8 +31,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/styles/utils/variables.scss';
-
 .input {
     padding: 8px 12px;
     display: block;

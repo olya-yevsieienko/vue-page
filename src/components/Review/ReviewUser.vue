@@ -12,7 +12,7 @@
             </div>
 
             <div class="review__block">
-                <span class="review__date">{{ formatDate(this.review.date, MONTHS) }}</span>
+                <span class="review__date">{{ formatDate(this.review.date, months) }}</span>
                 <VRating
                     :rating="review.rating"
                     :isActive="false"
@@ -25,15 +25,11 @@
 </template>
 
 <script>
-import VRating from '@/components/UI/VRating.vue';
 import formatDate from '@/assets/helpers/formatDate';
-import { MONTHS } from '@/assets/constants/api';
+import { MONTHS } from '@/assets/constants/reviewConstants';
 
 export default {
     name: 'ReviewUser',
-    components: {
-        VRating
-    },
     props: {
         review: {
             type: Object,
@@ -41,7 +37,7 @@ export default {
         }
     },
     methods: {
-        formatDate
+        formatDate,
     },
     computed: {
         userPhoto() {
@@ -49,9 +45,9 @@ export default {
                 ? this.review.photo
                 : 'src/assets/image/user.svg';
         },
+        months() {
+            return MONTHS.REVIEWS;
+        }
     },
-    created() {
-        this.MONTHS = MONTHS.REVIEWS;
-    }
 }
 </script>

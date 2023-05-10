@@ -1,8 +1,5 @@
 <template>
-    <p
-        class="tag"
-        :class="tagClass"
-    >
+    <p :class="['tag', tagClass]">
         <slot />
     </p>
 </template>
@@ -13,19 +10,18 @@ export default {
     props: {
         styleColor: {
             type: String,
+            default: ''
         },
     },
     computed: {
         tagClass() {
-            return `tag--${this.styleColor}` || '';
+            return this.styleColor ? `tag--${this.styleColor}` : '';
         }
     }
 }
 </script>
 
-<style lang="scss">
-@import '@/assets/styles/utils/variables.scss';
-
+<style lang="scss" scoped>
 .tag {
     padding: 4px 12px;
     display: inline-block;
