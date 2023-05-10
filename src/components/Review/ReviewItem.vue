@@ -1,18 +1,18 @@
 <template>
     <div class="reviews">
         <ReviewUser :review="review" class="reviews__user" />
-        <ReviewsForm @create-review="handleCreateReview" />
+        <ReviewForm @create-review="handleCreateReview" />
     </div>
 </template>
 
 <script>
-import ReviewsForm from '@/components/Reviews/ReviewsForm.vue';
-import ReviewUser from '@/components/Reviews/ReviewUser.vue';
+import ReviewForm from '@/components/Review/ReviewForm.vue';
+import ReviewUser from '@/components/Review/ReviewUser.vue';
 
 export default {
-    name: 'Reviews',
+    name: 'ReviewItem',
     components: {
-        ReviewsForm, ReviewUser
+        ReviewForm, ReviewUser
     },
     props: {
         review: {

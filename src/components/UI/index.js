@@ -1,9 +1,9 @@
-import Search from '@/components/UI/Search.vue';
-import Button from '@/components/UI/Button.vue';
-import StarRating from '@/components/UI/StarRating.vue';
-import Tag from '@/components/UI/Tag.vue';
-import ModalWindow from '@/components/UI/ModalWindow.vue';
+import VSearch from '@/components/UI/VSearch.vue';
+import VButton from '@/components/UI/VButton.vue';
+import VRating from '@/components/UI/VRating.vue';
+import VTag from '@/components/UI/VTag.vue';
+import VModal from '@/components/UI/VModal.vue';
 
 export default [
-    Search, Button, StarRating, Tag, ModalWindow
+    VSearch, VButton, VRating, VTag, VModal
 ]

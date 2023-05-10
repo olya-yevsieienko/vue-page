@@ -41,7 +41,7 @@
 import { MAX_CAREER_LEVEL } from '@/assets/constants/api';
 
 export default {
-    name: 'Vacancies',
+    name: 'CoursVacancies',
     props: {
         cours: {
             type: Object,

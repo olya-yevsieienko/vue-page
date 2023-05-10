@@ -36,7 +36,7 @@
 
 <script>
 export default {
-    name: 'Benefits',
+    name: 'CoursBenefits',
     props: {
         cours: {
             type: Object,

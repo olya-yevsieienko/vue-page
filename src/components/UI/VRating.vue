@@ -35,7 +35,7 @@
 import { MAX_RATING } from '@/assets/constants/api';
 
 export default {
-    name: 'StarRating',
+    name: 'VRating',
     props: {
         maxRating: {
             type: Number,

@@ -6,12 +6,12 @@
         >
             <div class="form__block">
                 <div class="form__inputs">
-                    <TextInput
+                    <VTextInput
                         class="form__input"
                         placeholder="Имя"
                         v-model.trim="review.username"
                     />
-                    <TextInput
+                    <VTextInput
                         class="form__input"
                         placeholder="Заголовок отзыва"
                         v-model.trim="review.reviewTitle"
@@ -20,7 +20,7 @@
             
                 <div class="form__grade">
                     <span>Оценка:</span>
-                    <StarRating
+                    <VRating
                         :isActive="true"
                         v-model="review.rating"
                         :shouldBeCleared="isFormSubmitted"
@@ -35,12 +35,12 @@
             />
 
             <div class="form__button">
-                <Button
+                <VButton
                     backgroundColor="violet"
                     @click="handleSubmit"
                 >
                     Отправить
-                </Button>
+                </VButton>
                 <span>
                     * Перед публикацией отзыв пройдет предварительную модерацию и проверку
                 </span>
@@ -48,23 +48,23 @@
         </form>
 
         <Transition name="transition-opacity">
-            <ModalWindow v-if="isModalOpen" @close="isModalOpen = false">
+            <VModal v-if="isModalOpen" @close="isModalOpen = false">
                 Спасибо за отзыв!
-            </ModalWindow>
+            </VModal>
         </Transition>
     </div>
 </template>
 
 <script>
-import Button from '@/components/UI/Button.vue';
-import TextInput from '@/components/UI/TextInput.vue';
-import StarRating from '@/components/UI/StarRating.vue';
-import ModalWindow from '@/components/UI/ModalWindow.vue';
+import VButton from '@/components/UI/VButton.vue';
+import VTextInput from '@/components/UI/VTextInput.vue';
+import VModal from '@/components/UI/VModal.vue';
+import VRating from '@/components/UI/VRating.vue';
 
 export default {
     name: 'ReviewForm',
     components: {
-        TextInput, Button, StarRating, ModalWindow
+        VTextInput, VButton, VRating, VModal
     },
     data() {
         return {

@@ -1,30 +1,30 @@
 <template>
     <div class="layout">
         <div class="layout__content">
-            <Header />
+            <TheHeader />
             <main class="layout__main">
-                <Sidebar />
+                <TheSidebar />
 
                 <div>
                     <slot />
                 </div>
             </main>
         </div>
-        <Footer class="layout__footer" />
+        <TheFooter class="layout__footer" />
     </div>
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import Sidebar from '@/components/Sidebar/Sidebar.vue';
-import Footer from '@/components/Footer.vue';
+import TheHeader from '@/components/TheHeader.vue';
+import TheSidebar from '@/components/Sidebar/TheSidebar.vue';
+import TheFooter from '@/components/TheFooter.vue';
 
 export default {
-    name: 'Layout',
+    name: 'TheLayout',
     components: {
-        Header, 
-        Sidebar, 
-        Footer
+        TheHeader, 
+        TheSidebar, 
+        TheFooter
     }
 }
 </script>

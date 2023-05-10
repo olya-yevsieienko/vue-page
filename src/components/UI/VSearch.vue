@@ -1,6 +1,6 @@
 <template>
     <div class="search">
-        <TextInput
+        <VTextInput
             placeholder="Поиск..."
             class="search__input"
             v-model="searchQuery"
@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import TextInput from '@/components/UI/TextInput.vue';
+import VTextInput from '@/components/UI/VTextInput.vue';
 import { useSearchStore } from '@/stores/SearchStore';
 
 export default {
-    name: 'Search',
+    name: 'VSearch',
     components: {
-        TextInput 
+        VTextInput 
     },
     data() {
         return {

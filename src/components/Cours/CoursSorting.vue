@@ -9,10 +9,10 @@
 </template>
 
 <script>
-import SortItem from '@/components/SortItem.vue';
+import SortItem from '@/components/Cours/CoursSortItem.vue';
 
 export default {
-    name: 'Sorting',
+    name: 'CoursSorting',
     components: {
         SortItem
     },

@@ -1,16 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import Courses from '@/pages/Courses.vue';
-import Home from '@/pages/Home.vue';
-import Services from '@/pages/Services.vue';
-import Books from '@/pages/Books.vue';
-import Goods from '@/pages/Goods.vue';
+import CoursesPage from '@/pages/CoursesPage.vue';
+import ServicesPage from '@/pages/ServicesPage.vue';
+import BooksPage from '@/pages/BooksPage.vue';
+import GoodsPage from '@/pages/GoodsPage.vue';
 
 const routes = [
     { path: '/', redirect: '/courses' },
-    { name: 'courses', path: '/courses', component: Courses },
-    { name: 'services', path: '/services', component: Services },
-    { name: 'books', path: '/books', component: Books },
-    { name: 'goods', path: '/goods', component: Goods },
+    { name: 'courses', path: '/courses', component: CoursesPage },
+    { name: 'services', path: '/services', component: ServicesPage },
+    { name: 'books', path: '/books', component: BooksPage },
+    { name: 'goods', path: '/goods', component: GoodsPage },
 ]
 
 export const router = createRouter({

@@ -10,12 +10,14 @@
                 
                 <div class="header__block">
                     <h2 class="header__title">{{ title }}</h2>
-                    <span
-                        v-if="sidebarStore.selectedItemOption && sidebarStore.selectedItem === 'курсы'"
-                        class="header__course-count"
-                    >
-                        {{ coursesStore.coursesCount }}
-                    </span>
+                    <Transition name="transition-opacity">
+                        <span
+                            v-if="sidebarStore.selectedItemOption && sidebarStore.selectedItem === 'курсы'"
+                            class="header__course-count"
+                        >
+                            {{ coursesStore.coursesCount }}
+                        </span>
+                    </Transition>
                 </div>
             </div>
             
@@ -32,12 +34,12 @@
 <script>
 import { useCoursesStore } from '@/stores/CoursesStore';
 import { useSidebarStore } from '@/stores/SidebarStore';
-import Sorting from '@/components/Sorting.vue';
+import Sorting from '@/components/Cours/CoursSorting.vue';
 import sortTypes from '@/assets/models/sortTypes';
 import capitalazeWord from '@/assets/helpers/capitalazeWord';
 
 export default {
-    name: 'Header',
+    name: 'TheHeader',
     components: {
         Sorting
     },

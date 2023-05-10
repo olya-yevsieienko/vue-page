@@ -13,7 +13,7 @@
 
 <script>
 export default {
-    name: 'ModalWindow',
+    name: 'VModal',
     props: {
         isModalOpen: {
             type: Boolean,

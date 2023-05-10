@@ -16,9 +16,9 @@
                         </div>
 
                         <ul class="cours__tag-list">
-                            <Tag v-for="tag in cours.tags" :key="tag" class="cours__tag">
+                            <VTag v-for="tag in cours.tags" :key="tag" class="cours__tag">
                                 {{ tag }}
-                            </Tag>
+                            </VTag>
                         </ul>
                     </div>
                 </div>
@@ -27,9 +27,9 @@
                     <div class="cours__block--column">
                         <p class="cours__block">
                             <span class="cours__price">{{ splitNumber(cours.price) }} ₽</span>
-                            <Tag class="cours__discount" styleColor="green">
+                            <VTag class="cours__discount" styleColor="green">
                                 {{ splitNumber(cours.discount) }} ₽
-                            </Tag>
+                            </VTag>
                         </p>
                         <span class="cours__caption">цена</span>
                     </div>
@@ -42,7 +42,7 @@
                     </p>
 
                     <div class="cours__block--column">
-                        <StarRating
+                        <VRating
                             class="cours__rating"
                             :rating="cours.rating"
                             :isActive="false"
@@ -70,7 +70,7 @@
                                 <span class="">{{ option.option }}</span>
                             </li>
                         </ul>
-                        <Tag>Гарантия трудоустройства</Tag>
+                        <VTag>Гарантия трудоустройства</VTag>
                     </div>
 
                     <div class="cours__block--columns">
@@ -89,41 +89,41 @@
             </div>
 
             <div class="cours__buttons">
-                <Button backgroundColor="violet" @click="handleOpenDetails">
+                <VButton backgroundColor="violet" @click="handleOpenDetails">
                     Узнать подробнее
-                </Button>
-                <Button iconSrc="arrow.svg" @click="handleOpenReviews">
+                </VButton>
+                <VButton iconSrc="arrow.svg" @click="handleOpenReviews">
                     Читать отзывы
-                </Button>
+                </VButton>
             </div>
         </div>
 
         <Transition name="cours">
-            <Reviews :review="review" v-if="isReviewsOpened" />
+            <ReviewItem :review="review" v-if="isReviewsOpened" />
         </Transition>
         <TransitionGroup name="cours">
-            <Vacancies :cours="cours" v-if="isDetailsOpened" />
-            <Benefits :cours="cours" v-if="isDetailsOpened" />
+            <CoursVacancies :cours="cours" v-if="isDetailsOpened" />
+            <CoursBenefits :cours="cours" v-if="isDetailsOpened" />
         </TransitionGroup>
     </div>
 </template>
 
 <script>
-import Reviews from '@/components/Reviews/Reviews.vue';
-import Vacancies from '@/components/Vacancies.vue';
-import Benefits from '@/components/Benefits.vue';
-import Button from '@/components/UI/Button.vue';
-import StarRating from '@/components/UI/StarRating.vue';
-import Tag from '@/components/UI/Tag.vue';
+import ReviewItem from '@/components/Review/ReviewItem.vue';
+import CoursVacancies from '@/components/Cours/CoursVacancies.vue';
+import CoursBenefits from '@/components/Cours/CoursBenefits.vue';
+import VButton from '@/components/UI/VButton.vue';
+import VRating from '@/components/UI/VRating.vue';
+import VTag from '@/components/UI/VTag.vue';
 import getCorrectEnding from '@/assets/helpers/getCorrectWordEnding.js';
 import splitNumber from '@/assets/helpers/splitNumber';
 import { MAX_RATING } from '@/assets/constants/api';
 import reviews from '@/assets/models/reviews';
 
 export default {
-    name: 'Cours',
+    name: 'CoursItem',
     components: {
-        Button, StarRating, Tag, Reviews, Vacancies, Benefits
+        VButton, VRating, VTag, ReviewItem, CoursVacancies, CoursBenefits
     },
     props: {
         cours: {

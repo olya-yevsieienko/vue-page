@@ -1,20 +1,20 @@
 <template>
     <div class="app">
-        <Layout>
+        <TheLayout>
             <router-view></router-view>
-        </Layout>
+        </TheLayout>
     </div>
 </template>
 
 <script>
-import Layout from '@/components/Layout.vue';
+import TheLayout from '@/components/TheLayout.vue';
 import courses from '@/assets/models/courses';
 import '@/assets/styles/style.scss';
 
 export default {
     name: 'App',
     components: {
-        Layout,
+        TheLayout,
     },
     created() {
         this.courses = courses;

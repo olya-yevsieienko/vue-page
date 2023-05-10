@@ -13,7 +13,7 @@
 
             <div class="review__block">
                 <span class="review__date">{{ formatDate(this.review.date, MONTHS) }}</span>
-                <StarRating
+                <VRating
                     :rating="review.rating"
                     :isActive="false"
                 />
@@ -25,14 +25,14 @@
 </template>
 
 <script>
-import StarRating from '@/components/UI/StarRating.vue';
+import VRating from '@/components/UI/VRating.vue';
 import formatDate from '@/assets/helpers/formatDate';
 import { MONTHS } from '@/assets/constants/api';
 
 export default {
     name: 'ReviewUser',
     components: {
-        StarRating
+        VRating
     },
     props: {
         review: {

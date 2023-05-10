@@ -1,7 +1,7 @@
 <template>
     <div class="courses">
         <TransitionGroup name="transition-transform">
-            <Cours
+            <CoursItem
                 v-for="cours in courses"
                 :key="cours.id"
                 :cours="cours"
@@ -14,13 +14,13 @@
 import { useCoursesStore } from '@/stores/CoursesStore';
 import { useSidebarStore } from '@/stores/SidebarStore';
 import { useSearchStore } from '@/stores/SearchStore';
-import Cours from '@/components/Cours.vue';
+import CoursItem from '@/components/Cours/CoursItem.vue';
 import sortCourses from '@/assets/helpers/sortCourses';
 
 export default ({
-    name: 'Courses',
+    name: 'CoursesPage',
     components: {
-        Cours
+        CoursItem
     },
     setup() {
         const coursesStore = useCoursesStore();

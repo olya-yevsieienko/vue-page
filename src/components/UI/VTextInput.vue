@@ -10,7 +10,7 @@
 
 <script>
 export default {
-    name: 'TextInput',
+    name: 'VTextInput',
     props: {
         placeholder: {
             type: String,

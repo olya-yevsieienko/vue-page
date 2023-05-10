@@ -23,7 +23,7 @@
 import { useCoursesStore } from '@/stores/CoursesStore';
 
 export default {
-    name: 'SortItem',
+    name: 'CoursSortItem',
     props: {
         sortItem: {
             type: Object,
