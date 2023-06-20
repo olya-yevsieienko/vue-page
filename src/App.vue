@@ -1,32 +1,30 @@
 <template>
     <div class="app">
-        <!-- 
-            @todo
-            Если ты используешь самозакрывающиеся теги компонентов, то они должны быть
-            в таком стиле <PageLayout />, как в react.
-        -->
-        <Layout />
+        <TheLayout>
+            <router-view></router-view>
+        </TheLayout>
     </div>
 </template>
 
 <script>
-import Layout from '@/components/Layout.vue';
+import TheLayout from '@/components/TheLayout.vue';
 import '@/assets/styles/style.scss';
 
 export default {
     name: 'App',
     components: {
-        Layout,
-    },
+        TheLayout,
+    }
 };
 </script>
 
-<style>
-/**
-    * @todo
-    * Стили выносятся из компонентов в отдельные css файлы (для уменьшения простыни кода в файле)
-    * исключение составляют совсем маленькие стилистические изменения компонентов,
-    * которые нет смысла выносить (например: https://imgur.com/a/erjCvmt)
-    * или стили ui компонентов, которые должны инкапсулировать в себе какие-то базовые стили
-*/
+<style lang="scss">
+@import '@/assets/styles/utils/variables';
+
+.app {
+    font-family: 'NanoSans', sans-serif;
+    font-size: 14px;
+    color: $gray--100;
+    background: $gray--00;
+}
 </style>

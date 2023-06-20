@@ -1,0 +1,104 @@
+.vacancies {
+    margin-top: 60px;
+
+    &__title {
+        font-size: 22px;
+        line-height: 30px;
+
+        &::after {
+            content: 'hh.ru';
+            position: relative;
+            right: -22px;
+            padding: 4px 12px;
+            display: inline-block;
+            font-weight: bold;
+            color: white;
+            background-color: $red--100;
+            border-radius: 20px;
+        }
+    }
+
+    &__block {
+        margin-top: 24px;
+        display: flex;
+        height: 140px;
+    }
+
+    &__total {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        width: 260px;
+        background: white;
+        box-shadow: $box-shadow;
+        border-radius: $border-radius;
+    }
+
+    &__list {
+        margin-left: 30px;
+        display: flex;
+        width: 100%;
+        background: white;
+        box-shadow: $box-shadow;
+        border-radius: $border-radius;
+    }
+
+    &__list-item {
+        position: relative;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        width: 33%;
+
+        &:not(:last-child) {
+            &::after {
+                content: '';
+                position: absolute;
+                border-right: 1px solid $gray--10;
+                top: 20px;
+                right: 0;
+                display: block;
+                height: 96px;
+                width: 0;
+            }
+        }
+    }
+
+    &__name {
+        margin: 20px 0 8px;
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    &__total-value {
+        font-size: 36px;
+        font-weight: bold;
+        line-height: 48px;
+        color: $violet--100;
+    }
+
+    &__price {
+        font-size: 26px;
+        font-weight: bold;
+        line-height: 35px;
+    }
+
+    &__career-level {
+        margin-top: 12px;
+        display: flex;
+        gap: 10px;
+    }
+
+    &__career-icon {
+        display: block;
+        width: 20px;
+        height: 20px;
+        background: url('@/assets/image/complex.svg');
+
+        &--disabled {
+            width: 20px;
+            height: 20px;
+            background: url('@/assets/image/complex-unsel.svg');
+        }
+    }
+}

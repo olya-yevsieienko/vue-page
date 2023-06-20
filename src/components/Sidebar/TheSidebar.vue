@@ -1,24 +1,23 @@
 <template>
     <div class="sidebar">
-        <Search class="sidebar__search" />
-        <SidebarList :list="listOptions" />
+        <VSearch class="sidebar__search" />
+        <SidebarList :list="sidebarData" />
     </div>
 </template>
 
 <script>
 import SidebarList from '@/components/Sidebar/SidebarList.vue';
 import sidebarData from '@/assets/models/sidebarData.js';
-import Search from '@/components/UI/Search.vue';
 
 export default {
+    name: 'TheSidebar',
     components: {
         SidebarList,
-        Search,
     },
-    data() {
-        return {
-            listOptions: sidebarData,
-        };
+    computed: {
+        sidebarData() {
+            return sidebarData;
+        }
     },
 };
 </script>

@@ -1,0 +1,160 @@
+.cours {
+    &__content {
+        padding: 30px;
+        width: 100%;
+        font-size: 16px;
+        background-color: white;
+        border-radius: $border-radius;
+        box-shadow: $box-shadow;
+    }
+
+    &:not(:first-child) {
+        margin-top: 40px;
+    }
+
+    &:last-child {
+        margin-bottom: 40px;
+    }
+
+    &__block {
+        display: flex;
+
+        &--column {
+            flex-direction: column;
+        }
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__image {
+        margin-right: 30px;
+    }
+
+    &__title {
+        @extend %h3;
+    }
+
+    &__icon {
+        margin-left: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border: 1px solid $gold;
+        border-radius: $border-radius;
+
+        &::after {
+            content: url('@/assets/image/cup.svg');
+        }
+    }
+
+    &__tag-list {
+        margin-top: 8px;
+    }
+
+    &__tag:not(:first-child) {
+        margin-left: 5px;
+    }
+
+    &__prices {
+        display: grid;
+        grid-template-columns: repeat(3, max-content);
+        column-gap: 40px;
+    }
+
+    &__price {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    &__caption {
+        margin-top: 8px;
+        display: block;
+    }
+
+    &__discount {
+        margin-left: 12px;
+    }
+
+    &__rating {
+        height: 28px;
+    }
+
+    &__description {
+        margin-top: 18px;
+        padding: 22px 0 18px;
+        border-top: 1px solid $gray--10;
+        border-bottom: 1px solid $gray--10;
+    }
+
+    &__info-item {
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        white-space: nowrap;
+
+        &:not(:first-child) {
+            margin-top: 12px;
+        }
+
+        &:last-child {
+            margin-bottom: 22px;
+        }
+    }
+
+    &__info-line {
+        position: relative;
+        bottom: 4px;
+        margin: 0 15px;
+        display: block;
+        width: 100%;
+        border: 1px dashed #C4C4C4;
+    }
+
+    &__details {
+        margin-top: 14px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 60px;
+    }
+
+    &__buttons {
+        margin-top: 22px;
+        display: flex;
+        gap: 20px;
+    }
+
+    &__features {
+        padding-left: 15px;
+        display: block;
+        height: max-content;
+        border-left: 2px solid $green--100;
+
+        &:last-child {
+            margin-top: 20px;
+        }
+
+        &--red {
+            border-left: 2px solid $red--50;
+        }
+    }
+
+    &-enter-active {
+        transition: all 0.5s ease-out;
+    }
+
+    &-leave-active {
+        transition: all 0.5s cubic-bezier(1, 0.5, 0.8, 1);
+    }
+
+    &-enter-from,
+    &-leave-to {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+}

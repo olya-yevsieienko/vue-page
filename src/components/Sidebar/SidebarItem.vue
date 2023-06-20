@@ -1,79 +1,97 @@
 <template>
-    <!-- 
-        В vue 3 допускается нахождение более одного элемента внутри template без корневого, а
-        в nuxt или vue 2 - нет (держи в голове эту инфу, чтоб потом не было проблем)
-    -->
-    <li class="item">
-        <div
-            class="item__info"
-            @click="handleOpenList()"
-        >
-            <img
-                :src="'src/assets/image/' + item.src"
-                :alt="item.title"
-                class="item__img"
-            />
-            <span class="item__name">
-                {{ item.title }}
-            </span>
-        </div>
-    </li>
-
-    <ul
-        v-if="isListOpen && listLength"
-        class="item__list"
-    >
+    <div>
         <li
-            v-for="listItem in item.options"
-            :key="listItem.id"
-            @click.stop="handleOpenSublist(listItem.id)"
-            class="item__list-item"
+            class="sidebar-item"
+            :class="{
+                'sidebar-item--active': item.title === sidebarStore.selectedItem 
+            }"
         >
-            {{ listItem.name }}
-
-            <ul v-if="isSublistOpen">
-                <li
-                    v-for="item in listItem.list"
-                    :key="item"
-                    class="item__sublist-item"
-                    @click.stop
+            <RouterLink :to="`/${item.name}`"
+                class="sidebar-item__info"
+                @click="handleOpenList(item.title)"
+            >
+                <img
+                    :src="`src/assets/image/${item.src}`"
+                    :alt="item.title"
+                    class="sidebar-item__image"
+                />
+                <span class="sidebar-item__name">
+                    {{ capitalizeWord(item.title) }}
+                </span>
+            </RouterLink>
+        </li>
+    
+        <TransitionGroup name="transition-transform">
+            <ul
+                v-if="item.options.length && (item.title === sidebarStore.selectedItem)"
+                class="sidebar-item__list"
+            >
+                <li 
+                    v-for="listItem in item.options"
+                    :key="listItem.name"
+                    class="sidebar-item__list-item"
+                    @click.stop="handleOpenSublist(listItem.name)"
                 >
-                    {{ item }}
+                    {{ listItem.name }}
+        
+                    <TransitionGroup name="transition-transform">
+                        <ul v-if="listItem.name === openedSublist">
+                            <li
+                                v-for="sublistItem in listItem.list"
+                                :key="sublistItem"
+                                class="sidebar-item__sublist-item"
+                                :class="{
+                                    'sidebar-item--active': sublistItem === sidebarStore.selectedItemOption
+                                }"
+                                @click.stop="sidebarStore.selectSidebarLinkOption(sublistItem)"
+                            >
+                                {{ sublistItem }}
+                            </li>
+                        </ul>
+                    </TransitionGroup>
                 </li>
             </ul>
-        </li>
-    </ul>
+        </TransitionGroup>
+    </div>
 </template>
 
 <script>
+import { useCoursesStore } from '@/stores/CoursesStore';
+import { useSidebarStore } from '@/stores/SidebarStore';
+import capitalizeWord from '@/assets/helpers/capitalazeWord';
+
 export default {
+    name: 'SidebarItem',
     props: {
         item: {
             type: Object,
+            required: true
         },
+    },
+    setup() {
+        const coursesStore = useCoursesStore();
+        const sidebarStore = useSidebarStore();
+
+        return { coursesStore, sidebarStore };
     },
     data() {
         return {
-            isListOpen: false,
-            isSublistOpen: false,
-            /**
-             * @todo
-             * Ты не меняешь длину массива, поэтому в data этого быть не должно
-             */
+            openedList: '',
+            openedSublist: '',
         };
     },
     methods: {
-        handleOpenList() {
-            this.isListOpen = !this.isListOpen;
+        capitalizeWord,
+        handleOpenList(listName) {
+            this.openedList = this.openedList === listName ? '' : listName;
+            this.openedSublist = '';
+            this.sidebarStore.selectSidebarLink(listName);
+            this.sidebarStore.selectSidebarLinkOption('');
         },
-        handleOpenSublist(id) {
-            this.isSublistOpen = !this.isSublistOpen;
-        },
+        handleOpenSublist(listItemName) {
+            this.openedSublist = this.openedSublist === listItemName ? '' : listItemName;
+        }  
     },
-    computed: {
-        listLength() {
-           return this.item.options.length; 
-        }
-    }
+    
 };
 </script>

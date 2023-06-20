@@ -6,25 +6,13 @@
 
     &--active {
         font-weight: 700;
-        color: $violet;
+        color: $violet--100;
     }
 
-    &--active &__img-wrap {
-        visibility: visible;
-    }
-
-    &__img-wrap {
-        margin-right: 8px;
-        padding: 10px 0;
-        visibility: hidden;
-    }
-
-    &__img {
+    &__image {
+        padding: 20px 4px;
         display: block;
-        width: 20px;
-        height: 14px;
-        background: url('@/assets/image/sort.svg');
-        background-repeat: no-repeat;
+        transition: .5s ease;
 
         &--desc {
             transform: rotate(180deg);
@@ -32,6 +20,7 @@
     }
 
     &__name {
+        margin-left: 4px;
         padding: 10px 0;
     }
 }

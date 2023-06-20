@@ -1,10 +1,19 @@
 @import '@/assets/styles/utils/normalize';
 @import '@/assets/styles/utils/variables';
 @import '@/assets/styles/utils/fonts';
+@import '@/assets/styles/utils/extends';
 
-@import '@/assets/styles/components/app';
+@import '@/assets/styles/animations/transition-opacity';
+@import '@/assets/styles/animations/transition-transform';
+
 @import '@/assets/styles/components/search';
 @import '@/assets/styles/components/header';
 @import '@/assets/styles/components/sidebarItem';
 @import '@/assets/styles/components/sorting';
 @import '@/assets/styles/components/sortItem';
+@import '@/assets/styles/components/cours';
+@import '@/assets/styles/components/reviewsForm';
+@import '@/assets/styles/components/reviewUser';
+@import '@/assets/styles/components/vacancies';
+@import '@/assets/styles/components/benefits';
+@import '@/assets/styles/components/footer';
